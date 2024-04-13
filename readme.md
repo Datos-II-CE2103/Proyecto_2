@@ -1,4 +1,4 @@
-# Instituto Tecnológio de Costa Rica
+# Instituto Tecnológico de Costa Rica
 
 ## Proyecto 2 - Selda
 
