@@ -6,6 +6,6 @@ compatibility_minimum = "4.2"
 [libraries]
 
 
-linux.debug.x86_64 = "res://bin/linux/libpgodotext.linux.template_debug.x86_64.so"
-linux.release.x86_64 = "res://bin/linux/libpgodotext.linux.template_debug.x86_64.so"
-linux.editor.x86_64 = "res://bin/linux/libpgodotext.linux.editor.x86_64.so"
+linux.debug.x86_64 = "res://bin/linux/libgdexample.linux.template_debug.x86_64.so"
+linux.release.x86_64 = "res://bin/linux/libgdexample.linux.template_debug.x86_64.so"
+linux.editor.x86_64 = "res://bin/linux/libgdexample.linux.editor.x86_64.so"
