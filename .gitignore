@@ -466,3 +466,9 @@ mono_crash.*.json
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/clion+all,clion,clion+iml,jetbrains,jetbrains+iml,jetbrains+all,godot,cmake,visualstudiocode
+
+## GODOT RELATED
+#Godot bin
+demo/bin/*/
+.sconsign.dblite
+src/*.os
