@@ -1,4 +1,5 @@
 #include "register_types.h"
+#include "player_2d.h"
 #include <gdextension_interface.h>
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/defs.hpp>
@@ -20,6 +21,7 @@ void uninitialize_gdextension_types(ModuleInitializationLevel p_level) {
 		return;
 	}
 }
+
 extern "C"
 {
 	// Initialization
