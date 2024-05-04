@@ -1,7 +1,7 @@
 #ifndef PREELIMINAR_JUGADOR2D_H
 #define PREELIMINAR_JUGADOR2D_H
-#include "../godot-cpp/gen/include/godot_cpp/classes/character_body2d.hpp"
-#include "../godot-cpp/gen/include/godot_cpp/classes/camera2d.hpp"
+#include "../../godot-cpp/gen/include/godot_cpp/classes/character_body2d.hpp"
+#include "../../godot-cpp/gen/include/godot_cpp/classes/camera2d.hpp"
 
 namespace godot {
 
