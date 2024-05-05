@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://ccfs00vf8auqj"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="MainMapa" type="MainMapa" parent="."]

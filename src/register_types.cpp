@@ -1,5 +1,6 @@
 #include "register_types.h"
-#include "entidades/player_2d.h"
+#include "entidades/jugador.h"
+#include "mapa.h"
 #include <gdextension_interface.h>
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/defs.hpp>
@@ -13,6 +14,7 @@ void initialize_gdextension_types(ModuleInitializationLevel p_level)
 		return;
 	}
     ClassDB::register_class<Player2D>();
+    ClassDB::register_class<MainMapa>();
 	//ClassDB::register_class<YourClass>();
 }
 
@@ -35,3 +37,4 @@ extern "C"
 		return init_obj.init();
 	}
 }
+

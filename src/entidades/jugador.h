@@ -12,7 +12,11 @@ namespace godot {
         GDCLASS(Player2D, CharacterBody2D)
 
     private:
-        double time_passed;
+        int vidas;
+        double velocidad;
+        //breadcruming
+        int puntos;
+
 
     protected:
         static void _bind_methods();
@@ -22,7 +26,11 @@ namespace godot {
         ~Player2D();
 
         void _process(double delta) override;
+
+        void set_vidas(const int vidas);
+        int get_vidas() const;
     };
+
 
 }
 
