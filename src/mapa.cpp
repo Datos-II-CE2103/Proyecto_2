@@ -47,6 +47,22 @@ void MainMapa::_ready(){
     // Add the label as a child of this node.
 
     add_child(p2p);
+
+
+    Array children = get_children();
+
+    for (int i = 0; i < children.size(); i++) {
+
+        godot::UtilityFunctions::print(children[i]);
+
+    }
+    Player2D* child = get_node("/root/main/MainMapa/@Player2D@3");
+
+    child->set_vidas(60);
+
+    //continue here (need to fix get_node is not working)
+    
+
 }
 
 MainMapa::~MainMapa() {
