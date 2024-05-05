@@ -35,6 +35,18 @@ void MainMapa::_ready(){
     } else {
         godot::UtilityFunctions::print("Error: ResourceLoader singleton not found.");
     }
+
+    Player2D* p2p = memnew(Player2D);
+
+
+    // Set the text of the label.
+
+    p2p->set_vidas(45);
+
+
+    // Add the label as a child of this node.
+
+    add_child(p2p);
 }
 
 MainMapa::~MainMapa() {
