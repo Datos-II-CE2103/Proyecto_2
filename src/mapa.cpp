@@ -13,7 +13,7 @@ void MainMapa::_bind_methods() {
     }
 
 MainMapa::MainMapa() {
-    jugador= nullptr;
+    jugador= memnew(Player2D);
 }
 
 void MainMapa::_ready(){
@@ -36,21 +36,11 @@ void MainMapa::_ready(){
         godot::UtilityFunctions::print("Error: ResourceLoader singleton not found.");
     }
 
-    Player2D* p2p = memnew(Player2D);
+    jugador->set_vidas(45);
 
 
-    // Set the text of the label.
+    add_child(jugador);
 
-    p2p->set_vidas(45);
-
-
-    // Add the label as a child of this node.
-
-    add_child(p2p);
-
-    child->set_vidas(60);
-
-    //continue here (need to fix get_node is not working)
     
 
 }

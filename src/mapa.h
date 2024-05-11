@@ -19,7 +19,7 @@ namespace godot {
         GDCLASS(MainMapa, Node2D)
 
     private:
-        Player2D *jugador;
+        Player2D* jugador;
         PackedScene jugadorTSCN;
 
 
