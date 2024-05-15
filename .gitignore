@@ -474,3 +474,5 @@ demo/assets/*/*.import
 demo/assets/*/*/*.import
 .sconsign.dblite
 src/**/*.os
+src/*.os
+Godot422
