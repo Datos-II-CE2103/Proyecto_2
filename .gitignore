@@ -472,3 +472,4 @@ mono_crash.*.json
 demo/bin/*/
 .sconsign.dblite
 src/*.os
+Godot422
