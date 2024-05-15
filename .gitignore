@@ -470,6 +470,9 @@ mono_crash.*.json
 ## GODOT RELATED
 #Godot bin
 demo/bin/*/
+demo/assets/*/*.import
+demo/assets/*/*/*.import
 .sconsign.dblite
+src/**/*.os
 src/*.os
 Godot422
