@@ -1,5 +1,13 @@
-[gd_scene format=3 uid="uid://bv7aa6meiw1pp"]
+[gd_scene load_steps=2 format=3 uid="uid://bv7aa6meiw1pp"]
+
+[ext_resource type="Texture2D" uid="uid://etao7gqkn1n3" path="res://icon.svg" id="2_ssaeb"]
 
 [node name="main" type="Node2D"]
+light_mask = 0
+texture_filter = 3
 
 [node name="MainMapa" type="MainMapa" parent="."]
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(336, 151)
+texture = ExtResource("2_ssaeb")

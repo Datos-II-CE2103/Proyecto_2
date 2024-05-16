@@ -123,7 +123,7 @@ animations = [{
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]
 texture_filter = 3
-position = Vector2(50, 34)
+position = Vector2(3, 34)
 scale = Vector2(3.5625, 3.46875)
 sprite_frames = SubResource("SpriteFrames_uq8ww")
 animation = &"abajo"

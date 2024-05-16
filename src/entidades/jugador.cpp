@@ -2,13 +2,12 @@
 
 #include <godot_cpp/core/class_db.hpp>
 
-#include "../../godot-cpp/gen/include/godot_cpp/classes/animated_sprite2d.hpp"
 #include "../../godot-cpp/gen/include/godot_cpp/classes/resource_loader.hpp"
 #include "../../godot-cpp/gen/include/godot_cpp/variant/utility_functions.hpp"
 #include "../../godot-cpp/gen/include/godot_cpp/classes/packed_scene.hpp"
 #include "../../godot-cpp/gen/include/godot_cpp/classes/input.hpp"
-#include "../../godot-cpp/gen/include/godot_cpp/classes/character_body2d.hpp"
-#include "../../godot-cpp/include/godot_cpp/variant/vector2.hpp"
+#include "../godot-cpp/gen/include/godot_cpp/classes/character_body2d.hpp"
+
 
 
 using namespace godot;
@@ -25,29 +24,19 @@ Player2D::Player2D() {
     // Initialize any variables here.
     vidas=5;
     puntos=0;
-    speed=30;
+    speed=40;
 }
 
 Player2D::~Player2D() {
     // Add your cleanup here.
 }
-
-void Player2D::_process(double delta) {
-    double time_passed=0;
-    time_passed+= delta;
-
-    Vector2 new_position = Vector2(10.0 + (10.0 * sin(time_passed * 2.0)), 10.0 + (10.0 * cos(time_passed * 1.5)));
-
-    set_position(new_position);
-}
-
 void Player2D::set_vidas(const int p_vidas) {
     vidas=p_vidas;
 }
 int Player2D::get_vidas() const {
     return vidas;
 }
-
+/*
 void Player2D::_ready() {
     Ref<PackedScene> resource;
     ResourceLoader *resource_loader = ResourceLoader::get_singleton();
@@ -68,31 +57,41 @@ void Player2D::_ready() {
     } else {
         godot::UtilityFunctions::print("Error: ResourceLoader singleton not found.");
     }
-}
+}*/
 
 void Player2D::update_animations() {
-    Vector2 velocity = get_velocity();
-    if (velocity.x > 0) {
-        player_animation->play("derecha");
-    } else if (velocity.x < 0) {
-        player_animation->play("izquierda");
-    } else if (velocity.y < 0) {
-        player_animation->play("arriba");
-    } else if (velocity.y > 0) {
-        player_animation->play("abajo");
+    Vector2 veloc = get_velocity();
+    if (veloc.x > 0) {
+        //player_animation->play("derecha");
+        //UtilityFunctions::print(veloc);
+    } else if (veloc.x < 0) {
+        //player_animation->play("izquierda");
+        //UtilityFunctions::print(veloc);
+    } else if (veloc.y < 0) {
+        //player_animation->play("arriba");
+        //UtilityFunctions::print(veloc);
+    } else if (veloc.y > 0) {
+        //player_animation->play("abajo");
+        //UtilityFunctions::print(veloc);
     } else {
-        player_animation->stop();
+        //player_animation->stop();
     }
 }
 
 void Player2D::get_input() {
     Vector2 input_direction = Input::get_singleton()->get_vector("ui_left", "ui_right", "ui_up", "ui_down");
-    set_velocity(input_direction * speed);
+    Vector2 veloc = input_direction * speed;
+    set_velocity(veloc);
+    move_and_slide();
 }
 
 void Player2D::_physics_process(double delta) {
-    get_input();
-    move_and_slide();
+    Player2D::get_input();
     update_animations();
 }
 
+/*
+void Player2D::_process(double delta) {
+    Player2D::_physics_process(delta);
+
+}*/

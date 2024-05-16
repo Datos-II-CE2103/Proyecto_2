@@ -1,18 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddjxfw7gdprc6"]
+[gd_scene load_steps=3 format=3 uid="uid://ddjxfw7gdprc6"]
+
+[ext_resource type="PackedScene" uid="uid://dw8yb06nkvybd" path="res://animtacionJugador.tscn" id="1_cpy03"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1jeym"]
+size = Vector2(78.5, 71.5)
 
-[node name="Node" type="Node"]
+[node name="Player2D" type="Player2D"]
+position = Vector2(20, 20)
 
-[node name="Player2D" type="Player2D" parent="."]
-position = Vector2(10.498, 19.993)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+texture_filter = 3
+texture_repeat = 1
+position = Vector2(89, 143)
 shape = SubResource("RectangleShape2D_1jeym")
 debug_color = Color(0.195952, 0.539768, 0.915757, 0.42)
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(10.3333, 19.9969)
+[node name="Camera2D" type="Camera2D" parent="CollisionShape2D"]
+position = Vector2(0.992096, -4)
+scale = Vector2(3.5625, 3.46875)
+zoom = Vector2(3, 3)
 
-[node name="Player2D2" type="Player2D" parent="."]
-position = Vector2(10.498, 19.993)
+[node name="AnimatedSprite2D" parent="CollisionShape2D" instance=ExtResource("1_cpy03")]
+position = Vector2(0.750023, 0.125123)
+scale = Vector2(4.90625, 4.35938)
