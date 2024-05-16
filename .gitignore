@@ -471,6 +471,6 @@ mono_crash.*.json
 #Godot bin
 demo/bin/*/
 demo/assets/*/*.import
-demo/assets/*/*/*.import
+demo/assets/*/**/*.import
 .sconsign.dblite
 src/**/*.os
