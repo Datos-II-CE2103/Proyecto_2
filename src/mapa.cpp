@@ -18,19 +18,19 @@ MainMapa::MainMapa() {
 
 void MainMapa::_ready(){
 
-    Ref<PackedScene> scene;
+    Ref<PackedScene> resource;
     ResourceLoader *resource_loader = ResourceLoader::get_singleton();
 
     if (resource_loader) {
-        scene = resource_loader->load("res://jugador.tscn");
+        resource = resource_loader->load("res://jugador.tscn");
 
-        if (scene.is_valid()) {
-            Node *instantiated_scene = scene->instantiate();
-            this->add_child(instantiated_scene);
-            Node *instantiated_scene2 = scene->instantiate();
-            this->add_child(instantiated_scene2);
+        if (resource.is_valid()) {
+            Player2D* animated_sprite = Object::cast_to<Player2D>(resource->instantiate());
+            if (animated_sprite) {
+                add_child(animated_sprite);
+            }
         } else {
-            godot::UtilityFunctions::print("Error loading scene: res://scene.tscn");
+            godot::UtilityFunctions::print("Error loading scene: res://jugador.tscn");
         }
     } else {
         godot::UtilityFunctions::print("Error: ResourceLoader singleton not found.");
@@ -38,8 +38,6 @@ void MainMapa::_ready(){
 
     jugador->set_vidas(45);
 
-
-    add_child(jugador);
 
     
 
