@@ -2,26 +2,20 @@ extends CharacterBody2D
 
 @export var speed = 40
 
-const WALK_FORCE = 600
-const WALK_MAX_SPEED = 200
-const STOP_FORCE = 1300
-const JUMP_SPEED = 200
-
-
 @onready var player_animation = $CollisionShape2D/AnimatedSprite2D
 func update_animations():
 	if velocity.x > 0:
 		player_animation.play("derecha")
-		print(velocity)
+		#print(velocity)
 	elif velocity.x < 0:
 		player_animation.play("izquierda")
-		print(velocity)
+		#print(velocity)
 	elif velocity.y < 0:
 		player_animation.play("arriba")
-		print(velocity)
+		#print(velocity)
 	elif velocity.y > 0:
 		player_animation.play("abajo")
-		print(velocity)
+		#print(velocity)
 	else:
 		player_animation.stop();
 		

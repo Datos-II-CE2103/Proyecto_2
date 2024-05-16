@@ -6,6 +6,7 @@
 #include "../../godot-cpp/gen/include/godot_cpp/variant/utility_functions.hpp"
 #include "../../godot-cpp/gen/include/godot_cpp/classes/packed_scene.hpp"
 #include "../../godot-cpp/gen/include/godot_cpp/classes/input.hpp"
+#include "../godot-cpp/gen/include/godot_cpp/classes/character_body2d.hpp"
 
 
 
@@ -23,7 +24,7 @@ Player2D::Player2D() {
     // Initialize any variables here.
     vidas=5;
     puntos=0;
-    speed=30;
+    speed=40;
 }
 
 Player2D::~Player2D() {
@@ -35,12 +36,12 @@ void Player2D::set_vidas(const int p_vidas) {
 int Player2D::get_vidas() const {
     return vidas;
 }
-
+/*
 void Player2D::_ready() {
     Ref<PackedScene> resource;
     ResourceLoader *resource_loader = ResourceLoader::get_singleton();
 
-    /*
+
     if (resource_loader) {
         resource = resource_loader->load("res://animtacionJugador.tscn");
 
@@ -55,22 +56,23 @@ void Player2D::_ready() {
         }
     } else {
         godot::UtilityFunctions::print("Error: ResourceLoader singleton not found.");
-    }*/
-}
+    }
+}*/
 
 void Player2D::update_animations() {
-    if (this->velocity.x > 0) {
+    Vector2 veloc = get_velocity();
+    if (veloc.x > 0) {
         //player_animation->play("derecha");
-        UtilityFunctions::print(this->velocity);
-    } else if (this->velocity.x < 0) {
+        //UtilityFunctions::print(veloc);
+    } else if (veloc.x < 0) {
         //player_animation->play("izquierda");
-        UtilityFunctions::print(this->velocity);
-    } else if (this->velocity.y < 0) {
+        //UtilityFunctions::print(veloc);
+    } else if (veloc.y < 0) {
         //player_animation->play("arriba");
-        UtilityFunctions::print(this->velocity);
-    } else if (this->velocity.y > 0) {
+        //UtilityFunctions::print(veloc);
+    } else if (veloc.y > 0) {
         //player_animation->play("abajo");
-        UtilityFunctions::print(this->velocity);
+        //UtilityFunctions::print(veloc);
     } else {
         //player_animation->stop();
     }
@@ -78,8 +80,8 @@ void Player2D::update_animations() {
 
 void Player2D::get_input() {
     Vector2 input_direction = Input::get_singleton()->get_vector("ui_left", "ui_right", "ui_up", "ui_down");
-    Vector2 velocity = input_direction * speed;
-    this->velocity=velocity;
+    Vector2 veloc = input_direction * speed;
+    set_velocity(veloc);
     move_and_slide();
 }
 

@@ -25,9 +25,10 @@ void MainMapa::_ready(){
         resource = resource_loader->load("res://jugador.tscn");
 
         if (resource.is_valid()) {
-            Player2D* animated_sprite = Object::cast_to<Player2D>(resource->instantiate());
-            if (animated_sprite) {
-                add_child(animated_sprite);
+            Player2D* player_node = Object::cast_to<Player2D>(resource->instantiate());
+            if (player_node) {
+                jugador=player_node;
+                add_child(player_node);
             }
         } else {
             godot::UtilityFunctions::print("Error loading scene: res://jugador.tscn");

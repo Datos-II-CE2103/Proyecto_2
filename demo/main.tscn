@@ -1,21 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bv7aa6meiw1pp"]
+[gd_scene load_steps=2 format=3 uid="uid://bv7aa6meiw1pp"]
 
-[ext_resource type="PackedScene" uid="uid://ddjxfw7gdprc6" path="res://jugador.tscn" id="1_ud2m8"]
 [ext_resource type="Texture2D" uid="uid://etao7gqkn1n3" path="res://icon.svg" id="2_ssaeb"]
 
 [node name="main" type="Node2D"]
 light_mask = 0
 texture_filter = 3
 
-[node name="Player2D" parent="." instance=ExtResource("1_ud2m8")]
-z_index = 1
-position = Vector2(215, 20)
-collision_layer = 8
-collision_mask = 4
-motion_mode = 1
-platform_floor_layers = 4294967042
+[node name="MainMapa" type="MainMapa" parent="."]
 
 [node name="Icon" type="Sprite2D" parent="."]
-texture_filter = 3
-position = Vector2(290, 75)
+position = Vector2(336, 151)
 texture = ExtResource("2_ssaeb")

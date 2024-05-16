@@ -1,14 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddjxfw7gdprc6"]
+[gd_scene load_steps=3 format=3 uid="uid://ddjxfw7gdprc6"]
 
 [ext_resource type="PackedScene" uid="uid://dw8yb06nkvybd" path="res://animtacionJugador.tscn" id="1_cpy03"]
-[ext_resource type="Script" path="res://jugador.gd" id="1_tm2xq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1jeym"]
 size = Vector2(78.5, 71.5)
 
 [node name="Player2D" type="Player2D"]
 position = Vector2(20, 20)
-script = ExtResource("1_tm2xq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 texture_filter = 3

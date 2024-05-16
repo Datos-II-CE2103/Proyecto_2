@@ -17,7 +17,7 @@ namespace godot {
     private:
         int vidas;
         double speed;
-        Vector2 velocity;
+        //Vector2 velocity;
         //breadcruming
         int puntos;
 
@@ -33,7 +33,7 @@ namespace godot {
         //void _process(double delta) override;
         void _physics_process(double delta);
 
-        void _ready();
+        //void _ready();
 
         void set_vidas(const int vidas);
         int get_vidas() const;
