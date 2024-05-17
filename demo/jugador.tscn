@@ -3,23 +3,21 @@
 [ext_resource type="PackedScene" uid="uid://dw8yb06nkvybd" path="res://animtacionJugador.tscn" id="1_cpy03"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1jeym"]
-size = Vector2(78.5, 71.5)
+size = Vector2(22, 21)
 
 [node name="Player2D" type="Player2D"]
-position = Vector2(20, 20)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 texture_filter = 3
 texture_repeat = 1
-position = Vector2(89, 143)
 shape = SubResource("RectangleShape2D_1jeym")
 debug_color = Color(0.195952, 0.539768, 0.915757, 0.42)
 
 [node name="Camera2D" type="Camera2D" parent="CollisionShape2D"]
-position = Vector2(0.992096, -4)
 scale = Vector2(3.5625, 3.46875)
 zoom = Vector2(3, 3)
 
 [node name="AnimatedSprite2D" parent="CollisionShape2D" instance=ExtResource("1_cpy03")]
-position = Vector2(0.750023, 0.125123)
-scale = Vector2(4.90625, 4.35938)
+position = Vector2(0, 0)
+scale = Vector2(1.375, 1.4375)
+frame_progress = 0.0

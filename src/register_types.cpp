@@ -1,5 +1,7 @@
 #include "register_types.h"
 #include "entidades/jugador.h"
+#include "entidades/enemigos.h"
+#include "entidades/espectros/espectro_gris.h"
 #include "mapa.h"
 #include <gdextension_interface.h>
 #include <godot_cpp/core/class_db.hpp>
@@ -15,6 +17,7 @@ void initialize_gdextension_types(ModuleInitializationLevel p_level)
 	}
     ClassDB::register_class<Player2D>();
     ClassDB::register_class<MainMapa>();
+    ClassDB::register_class<EspectroGris>();
 	//ClassDB::register_class<YourClass>();
 }
 
