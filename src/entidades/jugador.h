@@ -20,6 +20,8 @@ namespace godot {
         //Vector2 velocity;
         //breadcruming
         int puntos;
+        AnimatedSprite2D* player_animation;
+        Vector2 tileActual;
 
 
 
@@ -33,7 +35,7 @@ namespace godot {
         //void _process(double delta) override;
         void _physics_process(double delta);
 
-        //void _ready();
+        void _ready();
 
         void set_vidas(const int vidas);
         int get_vidas() const;
@@ -41,8 +43,6 @@ namespace godot {
         void get_input();
 
         void update_animations();
-
-
 
     };
 

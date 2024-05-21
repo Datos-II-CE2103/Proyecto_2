@@ -7,6 +7,7 @@
 #include "../../godot-cpp/gen/include/godot_cpp/classes/packed_scene.hpp"
 #include "../../godot-cpp/gen/include/godot_cpp/classes/input.hpp"
 #include "../godot-cpp/gen/include/godot_cpp/classes/character_body2d.hpp"
+#include "../godot-cpp/gen/include/godot_cpp/classes/tile_map.hpp"
 
 
 
@@ -25,6 +26,7 @@ Player2D::Player2D() {
     vidas=5;
     puntos=0;
     speed=40;
+    player_animation= memnew(AnimatedSprite2D);
 }
 
 Player2D::~Player2D() {
@@ -36,45 +38,32 @@ void Player2D::set_vidas(const int p_vidas) {
 int Player2D::get_vidas() const {
     return vidas;
 }
-/*
+
 void Player2D::_ready() {
-    Ref<PackedScene> resource;
-    ResourceLoader *resource_loader = ResourceLoader::get_singleton();
 
+    AnimatedSprite2D* temp_animations = get_node<AnimatedSprite2D>("CollisionShape2D/AnimatedSprite2D");
 
-    if (resource_loader) {
-        resource = resource_loader->load("res://animtacionJugador.tscn");
-
-        if (resource.is_valid()) {
-            AnimatedSprite2D* animated_sprite = Object::cast_to<AnimatedSprite2D>(resource->instantiate());
-            player_animation=animated_sprite;
-            if (animated_sprite) {
-                add_child(animated_sprite);
-        }
-        } else {
-            godot::UtilityFunctions::print("Error loading scene: res://scene.tscn");
-        }
-    } else {
-        godot::UtilityFunctions::print("Error: ResourceLoader singleton not found.");
+    if (temp_animations){
+        player_animation=temp_animations;
     }
-}*/
+}
 
 void Player2D::update_animations() {
     Vector2 veloc = get_velocity();
     if (veloc.x > 0) {
-        //player_animation->play("derecha");
+        player_animation->play("derecha");
         //UtilityFunctions::print(veloc);
     } else if (veloc.x < 0) {
-        //player_animation->play("izquierda");
+        player_animation->play("izquierda");
         //UtilityFunctions::print(veloc);
     } else if (veloc.y < 0) {
-        //player_animation->play("arriba");
+        player_animation->play("arriba");
         //UtilityFunctions::print(veloc);
     } else if (veloc.y > 0) {
-        //player_animation->play("abajo");
+        player_animation->play("abajo");
         //UtilityFunctions::print(veloc);
     } else {
-        //player_animation->stop();
+        player_animation->stop();
     }
 }
 
@@ -83,6 +72,17 @@ void Player2D::get_input() {
     Vector2 veloc = input_direction * speed;
     set_velocity(veloc);
     move_and_slide();
+
+    TileMap* temp_tilemap= get_node<TileMap>("../../TileMap");
+
+    if (temp_tilemap){
+        Vector2 tempActual=temp_tilemap->local_to_map(get_global_position());
+        if ((tempActual != tileActual)){
+            tileActual=tempActual;
+            UtilityFunctions::print(tileActual);
+        }
+
+    }
 }
 
 void Player2D::_physics_process(double delta) {
@@ -90,8 +90,4 @@ void Player2D::_physics_process(double delta) {
     update_animations();
 }
 
-/*
-void Player2D::_process(double delta) {
-    Player2D::_physics_process(delta);
 
-}*/

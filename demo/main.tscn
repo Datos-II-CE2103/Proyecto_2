@@ -1,13 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://bv7aa6meiw1pp"]
+[gd_scene load_steps=3 format=3 uid="uid://bv7aa6meiw1pp"]
 
-[ext_resource type="Texture2D" uid="uid://etao7gqkn1n3" path="res://icon.svg" id="2_ssaeb"]
+[ext_resource type="PackedScene" uid="uid://bernactvxhy7r" path="res://nivel01b.tscn" id="1_lora8"]
+[ext_resource type="PackedScene" uid="uid://35vtoyo53xd0" path="res://espectro_gris.tscn" id="2_wmokn"]
 
 [node name="main" type="Node2D"]
 light_mask = 0
 texture_filter = 3
 
-[node name="MainMapa" type="MainMapa" parent="."]
+[node name="TileMap" parent="." instance=ExtResource("1_lora8")]
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(336, 151)
-texture = ExtResource("2_ssaeb")
+[node name="MainMapa" type="MainMapa" parent="."]
+position = Vector2(128, 176)
+
+[node name="EspectroGris" parent="." instance=ExtResource("2_wmokn")]
+position = Vector2(192, 128)
