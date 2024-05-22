@@ -50,17 +50,21 @@ void Player2D::_ready() {
 
 void Player2D::update_animations() {
     Vector2 veloc = get_velocity();
+
+    if (veloc.x==0 & veloc.y==0){
+        player_animation->play("idle_down");
+    }
     if (veloc.x > 0) {
-        player_animation->play("derecha");
+        player_animation->play("run_right");
         //UtilityFunctions::print(veloc);
     } else if (veloc.x < 0) {
-        player_animation->play("izquierda");
+        player_animation->play("run_left");
         //UtilityFunctions::print(veloc);
     } else if (veloc.y < 0) {
-        player_animation->play("arriba");
+        player_animation->play("run_up");
         //UtilityFunctions::print(veloc);
     } else if (veloc.y > 0) {
-        player_animation->play("abajo");
+        player_animation->play("run_down");
         //UtilityFunctions::print(veloc);
     } else {
         player_animation->stop();
@@ -73,7 +77,7 @@ void Player2D::get_input() {
     set_velocity(veloc);
     move_and_slide();
 
-    TileMap* temp_tilemap= get_node<TileMap>("../../TileMap");
+    /*TileMap* temp_tilemap= get_node<TileMap>("../../TileMap");
 
     if (temp_tilemap){
         Vector2 tempActual=temp_tilemap->local_to_map(get_global_position());
@@ -82,7 +86,7 @@ void Player2D::get_input() {
             UtilityFunctions::print(tileActual);
         }
 
-    }
+    }*/
 }
 
 void Player2D::_physics_process(double delta) {

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://35vtoyo53xd0"]
 
-[ext_resource type="Texture2D" uid="uid://djdl5gcyi6gw3" path="res://assets/kindomitch/Characters/Monsters/Skeleton.png" id="1_y7ut3"]
+[ext_resource type="Texture2D" uid="uid://duuijbu3w3wr4" path="res://assets/kindomitch/Characters/Monsters/Skeleton.png" id="1_y7ut3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ydy60"]
 size = Vector2(35, 38)
