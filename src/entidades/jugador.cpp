@@ -26,6 +26,7 @@ Player2D::Player2D() {
     attack_area = nullptr;
     attack_collision = nullptr;
     isAttacking = false;
+    last_direction = Vector2(0,1);
 }
 
 Player2D::~Player2D() {
@@ -77,17 +78,37 @@ void Player2D::update_animations() {
     Vector2 veloc = get_velocity();
 
     if (isAttacking) {
-        player_animation->play("attack_right");
-    } else if (veloc.x > 0) {
+        if (last_direction == Vector2(0,1)){
+            player_animation->play("attack_down");
+        } else if (last_direction == Vector2(0,-1)){
+            player_animation->play("attack_up");
+        } else if (last_direction == Vector2(1,0)){
+            player_animation->play("attack_right");
+        } else if (last_direction == Vector2(-1,0)){
+            player_animation->play("attack_left");
+        }
+    } else if ((veloc.x > 0) & !isAttacking) {
         player_animation->play("run_right");
-    } else if (veloc.x < 0) {
+        last_direction = Vector2(1,0);
+    } else if ((veloc.x < 0) & !isAttacking) {
         player_animation->play("run_left");
-    } else if (veloc.y < 0) {
+        last_direction = Vector2(-1,0);
+    } else if ((veloc.y < 0) & !isAttacking) {
         player_animation->play("run_up");
-    } else if (veloc.y > 0) {
+        last_direction = Vector2(0,-1);
+    } else if ((veloc.y > 0) & !isAttacking) {
         player_animation->play("run_down");
+        last_direction = Vector2(0,1);
     } else {
-        player_animation->play("idle_down");
+        if (last_direction == Vector2(0,1)){
+            player_animation->play("idle_down");
+        } else if (last_direction == Vector2(0,-1)){
+            player_animation->play("idle_up");
+        } else if (last_direction == Vector2(1,0)){
+            player_animation->play("idle_right");
+        } else if (last_direction == Vector2(-1,0)){
+            player_animation->play("idle_left");
+        }
     }
 }
 

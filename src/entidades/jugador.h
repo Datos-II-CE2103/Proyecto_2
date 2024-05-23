@@ -26,7 +26,7 @@ namespace godot {
         Timer* attack_timer;
         Area2D* attack_area;
         CollisionShape2D* attack_collision;
-        Vector2 tileActual;
+        Vector2 last_direction;
 
     protected:
         static void _bind_methods();
