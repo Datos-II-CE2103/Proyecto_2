@@ -1,4 +1,4 @@
-[gd_scene load_steps=123 format=3 uid="uid://bls6g12myqp2w"]
+[gd_scene load_steps=124 format=3 uid="uid://bls6g12myqp2w"]
 
 [ext_resource type="Texture2D" uid="uid://h5y508gibe63" path="res://assets/RPG_Hero/attack/attack_down_40x40.png" id="1_vr5od"]
 [ext_resource type="Texture2D" uid="uid://cudbks26g4mny" path="res://assets/RPG_Hero/attack/attack_left_40x40.png" id="2_jguep"]
@@ -831,9 +831,16 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4lghu"]
+size = Vector2(7.25, 14.25)
+
 [node name="Player2D" type="Player2D"]
-position = Vector2(114, 65)
+position = Vector2(115, 67)
 metadata/_edit_group_ = true
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 1.5)
@@ -845,14 +852,17 @@ position = Vector2(-1, -1.5)
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_443oi")
 animation = &"idle_down"
-frame_progress = 0.36351
+frame_progress = 0.913027
 
 [node name="Camera2D" type="Camera2D" parent="CollisionShape2D"]
 position = Vector2(-1, -1.5)
 zoom = Vector2(5, 5)
 
-[node name="AttackTimer" type="Timer" parent="."]
-wait_time = 0.7
-one_shot = true
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="AttackCollision" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(11.375, 2.875)
+shape = SubResource("RectangleShape2D_4lghu")
+disabled = true
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timeout"]

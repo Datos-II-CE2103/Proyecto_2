@@ -6,6 +6,8 @@
 #include "../../godot-cpp/include/godot_cpp/variant/vector2.hpp"
 #include "../../godot-cpp/include/godot_cpp/core/object.hpp"
 #include "../../godot-cpp/gen/include/godot_cpp/classes/timer.hpp"
+#include "../../godot-cpp/gen/include/godot_cpp/classes/area2d.hpp"
+#include "../../godot-cpp/gen/include/godot_cpp/classes/collision_shape2d.hpp"
 
 namespace godot {
 
@@ -18,15 +20,13 @@ namespace godot {
     private:
         int vidas;
         double speed;
-        //Vector2 velocity;
-        //breadcruming
         int puntos;
         bool isAttacking;
         AnimatedSprite2D* player_animation;
-        Vector2 tileActual;
         Timer* attack_timer;
-
-
+        Area2D* attack_area;
+        CollisionShape2D* attack_collision;
+        Vector2 tileActual;
 
     protected:
         static void _bind_methods();
@@ -35,7 +35,6 @@ namespace godot {
         Player2D();
         ~Player2D();
 
-        //void _process(double delta) override;
         void _physics_process(double delta);
 
         void _ready();
@@ -48,9 +47,7 @@ namespace godot {
         void update_animations();
 
         void _on_attack_timeout();
-
     };
-
 
 }
 
