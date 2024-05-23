@@ -23,8 +23,14 @@ Player2D::Player2D() {
     speed = 40;
     player_animation = nullptr;
     attack_timer = nullptr;
-    attack_area = nullptr;
-    attack_collision = nullptr;
+    attack_area_right = nullptr;
+    attack_area_left = nullptr;
+    attack_area_up = nullptr;
+    attack_area_down = nullptr;
+    attack_collision_right = nullptr;
+    attack_collision_left = nullptr;
+    attack_collision_up = nullptr;
+    attack_collision_down = nullptr;
     isAttacking = false;
     last_direction = Vector2(0, 1);
 }
@@ -42,10 +48,16 @@ int Player2D::get_vidas() const {
 }
 
 void Player2D::_ready() {
-    player_animation = get_node<AnimatedSprite2D>("CollisionShape2D/AnimatedSprite2D");
+    player_animation = get_node<AnimatedSprite2D>("PlayerSprite2D");
     attack_timer = get_node<Timer>("AttackTimer");
-    attack_area = get_node<Area2D>("AttackArea");
-    attack_collision = attack_area->get_node<CollisionShape2D>("AttackCollision");
+    attack_area_right = get_node<Area2D>("AttackAreaRight");
+    attack_area_left = get_node<Area2D>("AttackAreaLeft");
+    attack_area_up = get_node<Area2D>("AttackAreaUp");
+    attack_area_down = get_node<Area2D>("AttackAreaDown");
+    attack_collision_right = attack_area_right->get_node<CollisionShape2D>("AttackCollisionRight");
+    attack_collision_left = attack_area_left->get_node<CollisionShape2D>("AttackCollisionLeft");
+    attack_collision_up = attack_area_up->get_node<CollisionShape2D>("AttackCollisionUp");
+    attack_collision_down = attack_area_down->get_node<CollisionShape2D>("AttackCollisionDown");
 
     if (!player_animation) {
         UtilityFunctions::print("Error: AnimatedSprite2D node not found");
@@ -57,12 +69,12 @@ void Player2D::_ready() {
         return;
     }
 
-    if (!attack_area) {
+    if (!attack_area_right || !attack_area_left || !attack_area_up || !attack_area_down) {
         UtilityFunctions::print("Error: AttackArea node not found");
         return;
     }
 
-    if (!attack_collision) {
+    if (!attack_collision_right || !attack_collision_left || !attack_collision_up || !attack_collision_down) {
         UtilityFunctions::print("Error: AttackCollision node not found");
         return;
     }
@@ -71,7 +83,10 @@ void Player2D::_ready() {
         attack_timer->connect("timeout", Callable(this, "_on_attack_timeout"));
     }
 
-    attack_collision->set_disabled(true);
+    attack_collision_right->set_disabled(true);
+    attack_collision_left->set_disabled(true);
+    attack_collision_up->set_disabled(true);
+    attack_collision_down->set_disabled(true);
 }
 
 void Player2D::update_animations() {
@@ -122,7 +137,23 @@ void Player2D::get_input() {
     if (Input::get_singleton()->is_action_just_pressed("ui_select") && !isAttacking) {
         isAttacking = true;
         attack_timer->start();
-        attack_collision->set_disabled(false);
+
+        // Desactivar todas las colisiones de ataque
+        attack_collision_right->set_disabled(true);
+        attack_collision_left->set_disabled(true);
+        attack_collision_up->set_disabled(true);
+        attack_collision_down->set_disabled(true);
+
+        // Activar la colisión de ataque según la última dirección
+        if (last_direction == Vector2(0, 1)) {
+            attack_collision_down->set_disabled(false);
+        } else if (last_direction == Vector2(0, -1)) {
+            attack_collision_up->set_disabled(false);
+        } else if (last_direction == Vector2(1, 0)) {
+            attack_collision_right->set_disabled(false);
+        } else if (last_direction == Vector2(-1, 0)) {
+            attack_collision_left->set_disabled(false);
+        }
     }
 
     if (!isAttacking) {
@@ -132,7 +163,11 @@ void Player2D::get_input() {
 
 void Player2D::_on_attack_timeout() {
     isAttacking = false;
-    attack_collision->set_disabled(true);
+    // Desactivar todas las colisiones de ataque
+    attack_collision_right->set_disabled(true);
+    attack_collision_left->set_disabled(true);
+    attack_collision_up->set_disabled(true);
+    attack_collision_down->set_disabled(true);
 }
 
 void Player2D::_physics_process(double delta) {
