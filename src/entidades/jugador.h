@@ -5,6 +5,7 @@
 #include "../../godot-cpp/gen/include/godot_cpp/classes/animated_sprite2d.hpp"
 #include "../../godot-cpp/include/godot_cpp/variant/vector2.hpp"
 #include "../../godot-cpp/include/godot_cpp/core/object.hpp"
+#include "../../godot-cpp/gen/include/godot_cpp/classes/timer.hpp"
 
 namespace godot {
 
@@ -20,8 +21,10 @@ namespace godot {
         //Vector2 velocity;
         //breadcruming
         int puntos;
+        bool isAttacking;
         AnimatedSprite2D* player_animation;
         Vector2 tileActual;
+        Timer* attack_timer;
 
 
 
@@ -43,6 +46,8 @@ namespace godot {
         void get_input();
 
         void update_animations();
+
+        void _on_attack_timeout();
 
     };
 

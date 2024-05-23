@@ -280,13 +280,13 @@ region = Rect2(320, 0, 40, 40)
 atlas = ExtResource("9_b66xu")
 region = Rect2(0, 0, 40, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vmydf"]
-atlas = ExtResource("9_b66xu")
-region = Rect2(40, 0, 40, 40)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_wacp5"]
 atlas = ExtResource("9_b66xu")
 region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmydf"]
+atlas = ExtResource("9_b66xu")
+region = Rect2(40, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ivlr0"]
 atlas = ExtResource("9_b66xu")
@@ -675,10 +675,10 @@ animations = [{
 "texture": SubResource("AtlasTexture_t3gxk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vmydf")
+"texture": SubResource("AtlasTexture_wacp5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wacp5")
+"texture": SubResource("AtlasTexture_vmydf")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ivlr0")
@@ -845,8 +845,14 @@ position = Vector2(-1, -1.5)
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_443oi")
 animation = &"idle_down"
-autoplay = "idle_down"
+frame_progress = 0.36351
 
 [node name="Camera2D" type="Camera2D" parent="CollisionShape2D"]
 position = Vector2(-1, -1.5)
 zoom = Vector2(5, 5)
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timeout"]
