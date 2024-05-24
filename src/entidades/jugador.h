@@ -9,6 +9,7 @@
 #include "../../godot-cpp/gen/include/godot_cpp/classes/timer.hpp"
 #include "../../godot-cpp/gen/include/godot_cpp/classes/area2d.hpp"
 #include "../../godot-cpp/gen/include/godot_cpp/classes/collision_shape2d.hpp"
+#include "../godot-cpp/gen/include/godot_cpp/classes/tile_map.hpp"
 
 namespace godot {
 
@@ -33,6 +34,9 @@ namespace godot {
         CollisionShape2D* attack_collision_left;
         CollisionShape2D* attack_collision_up;
         CollisionShape2D* attack_collision_down;
+
+        TileMap* globaltilemap;
+        Vector2 tileActual;
 
     protected:
         static void _bind_methods();

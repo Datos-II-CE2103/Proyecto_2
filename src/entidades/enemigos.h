@@ -7,12 +7,14 @@
 
 #include "../../godot-cpp/gen/include/godot_cpp/classes/character_body2d.hpp"
 
+
 namespace godot {
     class EnemigoB{
 
     private:
         int rute;
         int rango_vision;
+
     };
 
 
