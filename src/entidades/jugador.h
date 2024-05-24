@@ -48,6 +48,11 @@ namespace godot {
         void _on_attack_timeout();
         void set_vidas(const int vidas);
         int get_vidas() const;
+
+        // Nueva función para emitir la señal
+        void emit_position_changed();
+        // Señal para la posición cambiada
+        void position_changed(Vector2 new_position);
     };
 }
 

@@ -296,6 +296,7 @@ animation = &"idle"
 frame_progress = 0.213855
 
 [node name="AnimatedRight" type="AnimatedSprite2D" parent="."]
+visible = false
 texture_filter = 1
 position = Vector2(0, -9)
 scale = Vector2(0.5, 0.5)
