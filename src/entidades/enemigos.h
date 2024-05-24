@@ -5,7 +5,7 @@
 #ifndef GDEXTENSION_CPP_EXAMPLE_ENEMIGOS_H
 #define GDEXTENSION_CPP_EXAMPLE_ENEMIGOS_H
 
-#include "../../godot-cpp/gen/include/godot_cpp/classes/character_body2d.hpp"
+#include "../algoritmos/doubly_linked_list.h"
 
 
 namespace godot {

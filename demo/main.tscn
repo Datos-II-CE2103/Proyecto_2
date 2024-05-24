@@ -19,24 +19,23 @@ texture_filter = 3
 position = Vector2(31, 165)
 
 [node name="EspectroGris" parent="." instance=ExtResource("2_wmokn")]
-position = Vector2(5.03045, 21.0751)
-velocity = Vector2(-2.83954, 0)
+position = Vector2(98.3271, 45.7581)
+velocity = Vector2(0.924818, 29.9857)
 
 [node name="CanvasLayer" parent="." instance=ExtResource("3_157vj")]
 
 [node name="Chocobo" parent="." instance=ExtResource("4_hvei2")]
-position = Vector2(8.07499, 4.0002)
-velocity = Vector2(-8.96076, -4.439)
+position = Vector2(13.0751, 4.00011)
+velocity = Vector2(-9.5624, -2.92585)
 
 [node name="Player2D" parent="." instance=ExtResource("5_iisc3")]
 position = Vector2(44, 196)
 
 [node name="Raton" parent="." instance=ExtResource("6_pgstd")]
-position = Vector2(95.5028, 207)
-velocity = Vector2(0, 0)
+position = Vector2(765.023, 279.691)
+velocity = Vector2(0, -30)
 
 [node name="OjoEspectral" parent="." instance=ExtResource("7_ojcom")]
-position = Vector2(235, 135)
 
 [node name="StaticBody2D" parent="." instance=ExtResource("8_iqd5q")]
 position = Vector2(22, 159)
@@ -49,6 +48,3 @@ position = Vector2(66, 159)
 
 [node name="StaticBody2D4" parent="." instance=ExtResource("8_iqd5q")]
 position = Vector2(66, 232)
-
-[connection signal="position_changed" from="Player2D" to="Chocobo" method="_on_player_position_changed"]
-[connection signal="body_entered_range_area" from="OjoEspectral" to="EspectroGris" method="_on_body_entered_range_area"]

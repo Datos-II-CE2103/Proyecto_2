@@ -2,7 +2,7 @@
 
 using namespace godot;
 
-node::node() : valueNode(), nextNode(nullptr), prevNode(nullptr) {}
+node::node() : valueNode(Vector2(0, 0)), nextNode(nullptr), prevNode(nullptr) {}
 
 node::node(Vector2 newValue, node *n, node *p) : valueNode(newValue), nextNode(n), prevNode(p) {}
 

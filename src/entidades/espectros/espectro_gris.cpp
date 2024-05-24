@@ -1,6 +1,7 @@
 #include "espectro_gris.h"
-
+#include "../jugador.h"
 #include <godot_cpp/core/class_db.hpp>
+#include <godot_cpp/variant/utility_functions.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
 
 using namespace godot;
@@ -31,6 +32,8 @@ EspectroGris::EspectroGris() {
     animated_idle = nullptr;
     animated_right = nullptr;
     animated_left = nullptr;
+
+    playerBreadcrumbing=nullptr;
 }
 
 EspectroGris::~EspectroGris() {
@@ -54,6 +57,11 @@ void EspectroGris::set_velocidad(double p_velocidad) {
 }
 
 void EspectroGris::_ready() {
+    globaltilemap = get_node<TileMap>("../TileMap");
+    Player2D* jugador = get_node<Player2D>("../Player2D");
+
+    playerBreadcrumbing=jugador->get_player_breadcrumbing();
+
     position_timer = get_node<Timer>("PositionTimer");
 
     if (!position_timer) {
@@ -102,6 +110,7 @@ void EspectroGris::_process(double delta) {
     set_velocity(velocity);
     move_and_slide();
     update_animations();
+    follow_breadcrumbing();
 
     if (get_global_position().distance_to(patrol_points[current_patrol_point_index]) < 10) {
         move_to_next_patrol_point();
@@ -178,4 +187,16 @@ void EspectroGris::update_animations() {
 void EspectroGris::_on_body_entered_range_area(Node* body) {
     detected = true;
     UtilityFunctions::print("Jugador Detectado");
+}
+void EspectroGris::follow_breadcrumbing(){
+    Vector2 current_tile = globaltilemap->local_to_map(get_global_position());
+    if (playerBreadcrumbing->checkTiles(current_tile)){
+        UtilityFunctions::print("Breadcruming Detectado");
+        /*
+        node* temp = playerBreadcrumbing->getHead();
+        while (temp != nullptr) {
+            if (temp->getValueNode() == current_tile){
+                TileData *tdata = globaltilemap->get_cell_tile_data(0,current_tile);
+        }
+    }*/}
 }

@@ -34,7 +34,8 @@ public:
     void moveToPrev(node*& currentNode);
     void moveToHead(node*& currentNode);
 
-    void printAllSongs() const;
+    void printAllTiles() const;
+    bool checkTiles(Vector2 enemigo);
 };
 
 #endif // DOUBLY_LINKED_LIST_H
