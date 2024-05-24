@@ -97,7 +97,7 @@ void EspectroGris::_ready() {
 }
 
 void EspectroGris::_process(double delta) {
-    /*Vector2 velocity = current_direction * velocidad;
+    Vector2 velocity = current_direction * velocidad;
     set_velocity(velocity);
     move_and_slide();
     update_animations();
@@ -106,35 +106,22 @@ void EspectroGris::_process(double delta) {
         move_to_next_patrol_point();
     }
 
+    // Desactiva todos los collisionshapes
+    collision_down->set_disabled(true);
+    collision_right->set_disabled(true);
+    collision_left->set_disabled(true);
+    collision_up->set_disabled(true);
+
+    // Activa el collisionshape correspondiente a la dirección actual
     if (current_direction == Vector2(0, -1)) {
-
-        collision_down->set_disabled(true);
-        collision_right->set_disabled(true);
-        collision_left->set_disabled(true);
-
         collision_up->set_disabled(false);
     } else if (current_direction == Vector2(1, 0)) {
-
-        collision_down->set_disabled(true);
-        collision_up->set_disabled(true);
-        collision_left->set_disabled(true);
-
         collision_right->set_disabled(false);
     } else if (current_direction == Vector2(-1, 0)) {
-
-        collision_down->set_disabled(true);
-        collision_right->set_disabled(true);
-        collision_up->set_disabled(true);
-
         collision_left->set_disabled(false);
     } else if (current_direction == Vector2(0, 1)) {
-
-        collision_left->set_disabled(true);
-        collision_right->set_disabled(true);
-        collision_up->set_disabled(true);
-
         collision_down->set_disabled(false);
-    }*/
+    }
 }
 
 void EspectroGris::_on_position_timer_timeout() {

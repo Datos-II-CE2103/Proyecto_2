@@ -14,7 +14,7 @@ texture_filter = 3
 position = Vector2(31, 165)
 
 [node name="EspectroGris" parent="." instance=ExtResource("2_wmokn")]
-position = Vector2(117.712, 276.514)
-velocity = Vector2(-1.91789, -29.9386)
+position = Vector2(84.4243, 52.5714)
+velocity = Vector2(8.52216, -28.7641)
 
 [node name="CanvasLayer" parent="." instance=ExtResource("3_157vj")]
