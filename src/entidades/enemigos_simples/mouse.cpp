@@ -33,7 +33,6 @@ Raton::Raton() {
     animated_run_left = nullptr;
 
 }
-
 Raton::~Raton() {}
 
 int Raton::get_vidas() const {
@@ -138,4 +137,3 @@ void Raton::update_animations() {
         animated_run_left->set_visible(false);
     }
 }
-

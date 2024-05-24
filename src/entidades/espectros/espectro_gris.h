@@ -7,6 +7,8 @@
 #include "../../../godot-cpp/gen/include/godot_cpp/classes/timer.hpp"
 #include "../../godot-cpp/gen/include/godot_cpp/classes/area2d.hpp"
 #include "../../godot-cpp/gen/include/godot_cpp/classes/collision_shape2d.hpp"
+#include "../godot-cpp/gen/include/godot_cpp/classes/tile_map.hpp"
+#include "../godot-cpp/gen/include/godot_cpp/classes/tile_data.hpp"
 #include <vector>
 
 namespace godot {
@@ -36,8 +38,11 @@ namespace godot {
 
         CollisionShape2D* collision_down;
         CollisionShape2D* collision_right;
-        CollisionShape2D* collision_left;
         CollisionShape2D* collision_up;
+        CollisionShape2D* collision_left;
+
+        DoublyLinkedList* playerBreadcrumbing;
+        TileMap* globaltilemap;
 
     protected:
         static void _bind_methods();
@@ -58,6 +63,8 @@ namespace godot {
         void _on_position_timer_timeout();
         void move_to_next_patrol_point();
         void update_animations();
+
+        void follow_breadcrumbing();
 
         void _on_body_entered_range_area(Node* body);
     };

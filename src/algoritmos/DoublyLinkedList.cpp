@@ -1,6 +1,7 @@
 #include "doubly_linked_list.h"
 #include <iostream>
 #include "node.h"
+#include "../../godot-cpp/gen/include/godot_cpp/variant/utility_functions.hpp"
 
 using namespace godot;
 
@@ -108,6 +109,7 @@ void DoublyLinkedList::moveToPrev(node*& currentNode){
     if (currentNode->getPrevNode() != nullptr){
         current = currentNode->getPrevNode();
     } else {
+        delete(currentNode);
         current = getTail();
     }
 }
@@ -122,4 +124,20 @@ void DoublyLinkedList::moveToHead(node*& currentNode) {
         currentNode->setNextNode(getHead());
         setHead(currentNode);
     }
+}
+void DoublyLinkedList::printAllTiles() const {
+    node* temp = head;
+    while (temp != nullptr) {
+        godot::UtilityFunctions::print(temp->getValueNode());
+        temp = temp->getNextNode();
+    }
+}
+
+bool DoublyLinkedList::checkTiles(Vector2 enemigo){
+    node* temp = head;
+    while (temp != nullptr) {
+        if (temp->getValueNode() == enemigo){return true;}
+        temp = temp->getNextNode();
+    }
+    return false;
 }

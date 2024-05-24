@@ -52,7 +52,7 @@ int Player2D::get_vidas() const {
 }
 
 void Player2D::_ready() {
-    globaltilemap = get_node<TileMap>("../../TileMap");
+    globaltilemap = get_node<TileMap>("../TileMap");
     player_animation = get_node<AnimatedSprite2D>("PlayerSprite2D");
     attack_timer = get_node<Timer>("AttackTimer");
     attack_area_right = get_node<Area2D>("AttackAreaRight");
@@ -169,6 +169,9 @@ void Player2D::get_input() {
         Vector2 tempActual=globaltilemap->local_to_map(get_global_position());
         if ((tempActual != tileActual)){
             tileActual=tempActual;
+            if (breadcrumbing->getSize()>10){
+                breadcrumbing->removeFirst();
+            }
             breadcrumbing->insertLast(tileActual);
             //UtilityFunctions::print(tileActual);
         }
@@ -196,4 +199,8 @@ void Player2D::_physics_process(double delta) {
     if (old_position != get_position()) {
         emit_position_changed();
     }
+}
+
+DoublyLinkedList* Player2D::get_player_breadcrumbing(){
+    return this->breadcrumbing;
 }
