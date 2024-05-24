@@ -22,7 +22,7 @@ void MainMapa::_ready(){
     ResourceLoader *resource_loader = ResourceLoader::get_singleton();
 
     if (resource_loader) {
-        resource = resource_loader->load("res://jugador.tscn");
+        resource = resource_loader->load("res://jugador_2.tscn");
 
         if (resource.is_valid()) {
             Player2D* player_node = Object::cast_to<Player2D>(resource->instantiate());
@@ -31,7 +31,7 @@ void MainMapa::_ready(){
                 add_child(player_node);
             }
         } else {
-            godot::UtilityFunctions::print("Error loading scene: res://jugador.tscn");
+            godot::UtilityFunctions::print("Error loading scene: res://jugador_2.tscn");
         }
     } else {
         godot::UtilityFunctions::print("Error: ResourceLoader singleton not found.");
