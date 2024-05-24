@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bv7aa6meiw1pp"]
+[gd_scene load_steps=4 format=3 uid="uid://bv7aa6meiw1pp"]
 
 [ext_resource type="PackedScene" uid="uid://bernactvxhy7r" path="res://nivel01b.tscn" id="1_lora8"]
 [ext_resource type="PackedScene" uid="uid://35vtoyo53xd0" path="res://espectro_gris.tscn" id="2_wmokn"]
+[ext_resource type="PackedScene" uid="uid://cq2d2nd3tfjlq" path="res://corazones.tscn" id="3_157vj"]
 
 [node name="main" type="Node2D"]
 light_mask = 0
@@ -13,4 +14,7 @@ texture_filter = 3
 position = Vector2(31, 165)
 
 [node name="EspectroGris" parent="." instance=ExtResource("2_wmokn")]
-position = Vector2(192, 128)
+position = Vector2(272.364, 128)
+velocity = Vector2(30, 0)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("3_157vj")]

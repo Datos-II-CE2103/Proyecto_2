@@ -1,0 +1,89 @@
+[gd_scene load_steps=5 format=3 uid="uid://cq2d2nd3tfjlq"]
+
+[ext_resource type="Texture2D" uid="uid://dixb12yqjw5gw" path="res://assets/RPG_Hero/$_srw_free_icons1.png" id="1_b4yaj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gho0f"]
+atlas = ExtResource("1_b4yaj")
+region = Rect2(0, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lqxq"]
+atlas = ExtResource("1_b4yaj")
+region = Rect2(96, 96, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mk2j4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gho0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lqxq")
+}],
+"loop": true,
+"name": &"heart",
+"speed": 5.0
+}]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Corazon1" type="TextureRect" parent="."]
+offset_left = 1010.0
+offset_right = 1010.0
+offset_bottom = 40.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+
+[node name="CorazonAnimado1" type="AnimatedSprite2D" parent="Corazon1"]
+texture_filter = 1
+position = Vector2(122, 18)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_mk2j4")
+animation = &"heart"
+
+[node name="Corazon2" type="TextureRect" parent="."]
+offset_left = 1010.0
+offset_right = 1010.0
+offset_bottom = 40.0
+
+[node name="CorazonAnimado2" type="AnimatedSprite2D" parent="Corazon2"]
+texture_filter = 1
+position = Vector2(81, 18)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_mk2j4")
+animation = &"heart"
+
+[node name="Corazon3" type="TextureRect" parent="."]
+offset_left = 1010.0
+offset_right = 1010.0
+offset_bottom = 40.0
+
+[node name="CorazonAnimado3" type="AnimatedSprite2D" parent="Corazon3"]
+texture_filter = 1
+position = Vector2(40, 19)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_mk2j4")
+animation = &"heart"
+
+[node name="Corazon5" type="TextureRect" parent="."]
+offset_left = 1010.0
+offset_right = 1010.0
+offset_bottom = 40.0
+
+[node name="CorazonAnimado4" type="AnimatedSprite2D" parent="Corazon5"]
+texture_filter = 1
+position = Vector2(-44, 19)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_mk2j4")
+animation = &"heart"
+
+[node name="Corazon4" type="TextureRect" parent="."]
+offset_left = 1010.0
+offset_right = 1010.0
+offset_bottom = 40.0
+
+[node name="CorazonAnimado4" type="AnimatedSprite2D" parent="Corazon4"]
+texture_filter = 1
+position = Vector2(-2, 19)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_mk2j4")
+animation = &"heart"
