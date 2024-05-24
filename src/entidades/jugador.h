@@ -52,6 +52,9 @@ namespace godot {
         void _on_attack_timeout();
         void set_vidas(const int vidas);
         int get_vidas() const;
+
+        void emit_position_changed();
+        void position_changed(Vector2 new_position);
     };
 }
 

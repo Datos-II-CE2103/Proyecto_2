@@ -1,0 +1,159 @@
+[gd_scene load_steps=21 format=3 uid="uid://bcjacfaax8g58"]
+
+[ext_resource type="Texture2D" uid="uid://c1n5r6rv5hqyq" path="res://assets/Pixel Art Bird 16x16/BirdSprite.png" id="1_ailum"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yrp7"]
+atlas = ExtResource("1_ailum")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_312q1"]
+atlas = ExtResource("1_ailum")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xomqk"]
+atlas = ExtResource("1_ailum")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7s2xj"]
+atlas = ExtResource("1_ailum")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0sp4"]
+atlas = ExtResource("1_ailum")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixl4v"]
+atlas = ExtResource("1_ailum")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smklf"]
+atlas = ExtResource("1_ailum")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uckht"]
+atlas = ExtResource("1_ailum")
+region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_evqef"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yrp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_312q1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xomqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7s2xj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0sp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixl4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smklf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uckht")
+}],
+"loop": true,
+"name": &"run_right",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upd0g"]
+atlas = ExtResource("1_ailum")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wo8c4"]
+atlas = ExtResource("1_ailum")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkxbb"]
+atlas = ExtResource("1_ailum")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pccf"]
+atlas = ExtResource("1_ailum")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ncnb"]
+atlas = ExtResource("1_ailum")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtxk4"]
+atlas = ExtResource("1_ailum")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41luv"]
+atlas = ExtResource("1_ailum")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b10ws"]
+atlas = ExtResource("1_ailum")
+region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q0hq3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_upd0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wo8c4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkxbb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pccf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ncnb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtxk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41luv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b10ws")
+}],
+"loop": true,
+"name": &"run_left",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0bmrk"]
+size = Vector2(16, 14)
+
+[node name="Chocobo" type="Chocobo"]
+position = Vector2(0.0245602, 0.116741)
+collision_layer = 3
+collision_mask = 3
+velocity = Vector2(2.05876, 9.78578)
+
+[node name="AnimatedRunRight" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_evqef")
+animation = &"run_right"
+autoplay = "run_right"
+frame_progress = 0.223337
+flip_h = true
+
+[node name="AnimatedRunLeft" type="AnimatedSprite2D" parent="."]
+visible = false
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_q0hq3")
+animation = &"run_left"
+frame_progress = 0.597579
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_0bmrk")

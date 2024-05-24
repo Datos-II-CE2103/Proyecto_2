@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxk73umk5ilff"]
+
+[ext_resource type="Texture2D" uid="uid://dhrfu0hpbjcof" path="res://assets/kindomitch/Tileds/World_Three.png" id="1_jriwd"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_16ee3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_od53t"]
+atlas = ExtResource("1_jriwd")
+region = Rect2(132, 96, 44, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2cp21"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_od53t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xv4k5"]
+size = Vector2(45, 32)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+disable_mode = 1
+collision_layer = 255
+collision_mask = 255
+physics_material_override = SubResource("PhysicsMaterial_16ee3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2cp21")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+texture_filter = 1
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_xv4k5")

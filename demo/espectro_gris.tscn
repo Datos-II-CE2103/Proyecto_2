@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://35vtoyo53xd0"]
+[gd_scene load_steps=44 format=3 uid="uid://35vtoyo53xd0"]
 
 [ext_resource type="Texture2D" uid="uid://igwsmc84b0p7" path="res://assets/Pixel Crawler - FREE - 1.8/Enemy/Skeleton Crew/Skeleton - Base/Idle/Idle-Sheet.png" id="1_e6rfs"]
 [ext_resource type="Texture2D" uid="uid://cdgkl4tlvdy4h" path="res://assets/Pixel Crawler - FREE - 1.8/Enemy/Skeleton Crew/Skeleton - Base/Death/Death-Sheet.png" id="2_7gq6p"]
@@ -266,24 +266,34 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jbh8p"]
-size = Vector2(11.7829, 65.7216)
+size = Vector2(9.89145, 55.9675)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_awhtf"]
+size = Vector2(70, 14.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbc72"]
+size = Vector2(70, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q1k2k"]
+size = Vector2(10, 55.5)
 
 [node name="EspectroGris" type="EspectroGris"]
-position = Vector2(62.5053, 3746.41)
+position = Vector2(64.4033, 3556.8)
 collision_layer = 2
-velocity = Vector2(0.300157, -29.9985)
+velocity = Vector2(0.300228, -29.9985)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_ydy60")
 
 [node name="AnimatedIdle" type="AnimatedSprite2D" parent="."]
+visible = false
 texture_filter = 3
 position = Vector2(1, -0.999999)
 scale = Vector2(0.5, 0.511)
 sprite_frames = SubResource("SpriteFrames_qjlby")
 animation = &"idle"
-frame_progress = 0.157646
+frame_progress = 0.412987
 
 [node name="AnimatedRight" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -292,7 +302,7 @@ position = Vector2(0, -9)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_giari")
 animation = &"run_right"
-frame_progress = 0.295073
+frame_progress = 0.865498
 
 [node name="AnimatedLeft" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -312,26 +322,27 @@ autostart = true
 collision_layer = 0
 
 [node name="CollisionRange_Down" type="CollisionShape2D" parent="AreaRange_Down"]
-position = Vector2(0.649139, 31.4834)
+position = Vector2(0.548977, 25.5901)
 shape = SubResource("RectangleShape2D_jbh8p")
+disabled = true
 
 [node name="AreaRange_Right" type="Area2D" parent="."]
-collision_layer = 0
 
 [node name="CollisionRange_Right" type="CollisionShape2D" parent="AreaRange_Right"]
-position = Vector2(41.9516, -0.402832)
-shape = SubResource("RectangleShape2D_jbh8p")
+position = Vector2(40.4947, -0.159912)
+shape = SubResource("RectangleShape2D_awhtf")
+disabled = true
 
 [node name="AreaRange_Left" type="Area2D" parent="."]
-collision_layer = 0
 
 [node name="CollisionRange_Left" type="CollisionShape2D" parent="AreaRange_Left"]
-position = Vector2(-40.0021, -0.908203)
-shape = SubResource("RectangleShape2D_jbh8p")
+position = Vector2(-39.5053, -0.409912)
+shape = SubResource("RectangleShape2D_cbc72")
+disabled = true
 
 [node name="AreaRange_Up" type="Area2D" parent="."]
-collision_layer = 0
 
 [node name="CollisionRange_Up" type="CollisionShape2D" parent="AreaRange_Up"]
-position = Vector2(0.323536, -40.769)
-shape = SubResource("RectangleShape2D_jbh8p")
+position = Vector2(0.494701, -34.4099)
+shape = SubResource("RectangleShape2D_q1k2k")
+disabled = true

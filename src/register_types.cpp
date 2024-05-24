@@ -2,6 +2,10 @@
 #include "entidades/jugador.h"
 #include "entidades/enemigos.h"
 #include "entidades/espectros/espectro_gris.h"
+#include "entidades/enemigos_simples/mouse.h"
+#include "entidades/enemigos_simples/chocobo.h"
+#include "entidades/enemigos_simples/ojo_espectral.h"
+#include "entidades/objetos/cofre.h"
 #include "mapa.h"
 #include <gdextension_interface.h>
 #include <godot_cpp/core/class_db.hpp>
@@ -18,7 +22,10 @@ void initialize_gdextension_types(ModuleInitializationLevel p_level)
     ClassDB::register_class<Player2D>();
     ClassDB::register_class<MainMapa>();
     ClassDB::register_class<EspectroGris>();
-	//ClassDB::register_class<YourClass>();
+    ClassDB::register_class<Raton>();
+    ClassDB::register_class<Chocobo>();
+    ClassDB::register_class<OjoEspectral>();
+    ClassDB::register_class<Cofre>();
 }
 
 void uninitialize_gdextension_types(ModuleInitializationLevel p_level) {
