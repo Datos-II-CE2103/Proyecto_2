@@ -35,6 +35,7 @@ Player2D::Player2D() {
     attack_collision_down = nullptr;
     isAttacking = false;
     last_direction = Vector2(0, 1);
+    globaltilemap = memnew(TileMap);
 }
 
 Player2D::~Player2D() {
@@ -50,6 +51,7 @@ int Player2D::get_vidas() const {
 }
 
 void Player2D::_ready() {
+    globaltilemap = get_node<TileMap>("../../TileMap");
     player_animation = get_node<AnimatedSprite2D>("PlayerSprite2D");
     attack_timer = get_node<Timer>("AttackTimer");
     attack_area_right = get_node<Area2D>("AttackAreaRight");
@@ -160,6 +162,15 @@ void Player2D::get_input() {
 
     if (!isAttacking) {
         move_and_slide();
+    }
+
+    if (globaltilemap){
+        Vector2 tempActual=globaltilemap->local_to_map(get_global_position());
+        if ((tempActual != tileActual)){
+            tileActual=tempActual;
+            UtilityFunctions::print(tileActual);
+        }
+
     }
 }
 
