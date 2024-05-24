@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bv7aa6meiw1pp"]
+[gd_scene load_steps=10 format=3 uid="uid://bv7aa6meiw1pp"]
 
 [ext_resource type="PackedScene" uid="uid://bernactvxhy7r" path="res://nivel01b.tscn" id="1_lora8"]
 [ext_resource type="PackedScene" uid="uid://35vtoyo53xd0" path="res://espectro_gris.tscn" id="2_wmokn"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cl2fv23hex85d" path="res://raton.tscn" id="6_pgstd"]
 [ext_resource type="PackedScene" uid="uid://qj60wmga2760" path="res://ojo_espectral.tscn" id="7_ojcom"]
 [ext_resource type="PackedScene" uid="uid://cxk73umk5ilff" path="res://arbol.tscn" id="8_iqd5q"]
+[ext_resource type="PackedScene" uid="uid://l83vapumnwmt" path="res://cofre.tscn" id="9_tdewc"]
 
 [node name="main" type="Node2D"]
 light_mask = 0
@@ -19,20 +20,20 @@ texture_filter = 3
 position = Vector2(31, 165)
 
 [node name="EspectroGris" parent="." instance=ExtResource("2_wmokn")]
-position = Vector2(5.03045, 21.0751)
-velocity = Vector2(-2.83954, 0)
+position = Vector2(5.0438, 21.078)
+velocity = Vector2(-2.21118, 0)
 
 [node name="CanvasLayer" parent="." instance=ExtResource("3_157vj")]
 
 [node name="Chocobo" parent="." instance=ExtResource("4_hvei2")]
-position = Vector2(8.07499, 4.0002)
-velocity = Vector2(-8.96076, -4.439)
+position = Vector2(8.07505, 4.02819)
+velocity = Vector2(-8.94883, -4.46302)
 
 [node name="Player2D" parent="." instance=ExtResource("5_iisc3")]
 position = Vector2(44, 196)
 
 [node name="Raton" parent="." instance=ExtResource("6_pgstd")]
-position = Vector2(95.5028, 207)
+position = Vector2(86.1457, 8.75214)
 velocity = Vector2(0, 0)
 
 [node name="OjoEspectral" parent="." instance=ExtResource("7_ojcom")]
@@ -49,6 +50,15 @@ position = Vector2(66, 159)
 
 [node name="StaticBody2D4" parent="." instance=ExtResource("8_iqd5q")]
 position = Vector2(66, 232)
+
+[node name="Cofre" parent="." instance=ExtResource("9_tdewc")]
+position = Vector2(18, 282)
+
+[node name="Cofre2" parent="." instance=ExtResource("9_tdewc")]
+position = Vector2(148, 442)
+
+[node name="Cofre3" parent="." instance=ExtResource("9_tdewc")]
+position = Vector2(129, 13)
 
 [connection signal="position_changed" from="Player2D" to="Chocobo" method="_on_player_position_changed"]
 [connection signal="body_entered_range_area" from="OjoEspectral" to="EspectroGris" method="_on_body_entered_range_area"]

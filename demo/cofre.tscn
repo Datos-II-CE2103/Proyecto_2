@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://l83vapumnwmt"]
+
+[ext_resource type="Texture2D" uid="uid://cpf76y6t2ds2m" path="res://assets/kindomitch/Animateds/Chests/Chest1.png" id="1_2ems6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjtmk"]
+atlas = ExtResource("1_2ems6")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fp3q"]
+atlas = ExtResource("1_2ems6")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cds6v"]
+atlas = ExtResource("1_2ems6")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_buhw6"]
+atlas = ExtResource("1_2ems6")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icscg"]
+atlas = ExtResource("1_2ems6")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i8i1h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjtmk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fp3q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cds6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_buhw6")
+}],
+"loop": false,
+"name": &"open",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icscg")
+}],
+"loop": false,
+"name": &"opened",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dfe75"]
+size = Vector2(14, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p7n41"]
+size = Vector2(29, 27)
+
+[node name="Cofre" type="Cofre"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 1023
+visibility_layer = 1023
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_i8i1h")
+animation = &"open"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_dfe75")
+
+[node name="OpenArea" type="Area2D" parent="."]
+
+[node name="OpenCollision" type="CollisionShape2D" parent="OpenArea"]
+shape = SubResource("RectangleShape2D_p7n41")

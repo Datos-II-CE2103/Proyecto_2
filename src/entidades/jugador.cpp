@@ -52,7 +52,8 @@ int Player2D::get_vidas() const {
 }
 
 void Player2D::_ready() {
-    globaltilemap = get_node<TileMap>("../../TileMap");
+
+    globaltilemap = get_node<TileMap>("../TileMap");
     player_animation = get_node<AnimatedSprite2D>("PlayerSprite2D");
     attack_timer = get_node<Timer>("AttackTimer");
     attack_area_right = get_node<Area2D>("AttackAreaRight");
