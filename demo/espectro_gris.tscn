@@ -266,7 +266,7 @@ animations = [{
 }]
 
 [node name="EspectroGris" type="EspectroGris"]
-position = Vector2(0, 138.838)
+position = Vector2(0, 9994.54)
 collision_layer = 2
 velocity = Vector2(0, 30)
 

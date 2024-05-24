@@ -1,12 +1,9 @@
 #include "espectro_gris.h"
 
 #include <godot_cpp/core/class_db.hpp>
-#include <godot_cpp/classes/resource_loader.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
-#include <godot_cpp/classes/packed_scene.hpp>
-#include <godot_cpp/classes/input.hpp>
 #include <godot_cpp/classes/timer.hpp>
-#include <godot_cpp/classes/character_body2d.hpp>
+#include <godot_cpp/classes/animated_sprite2d.hpp>
 
 using namespace godot;
 
@@ -28,6 +25,10 @@ EspectroGris::EspectroGris() {
     position_timer = nullptr;
     current_direction = Vector2(0, 0);
     rng.seed(std::random_device()()); // Inicializar el motor de números aleatorios
+
+    animated_idle = nullptr;
+    animated_right = nullptr;
+    animated_left = nullptr;
 }
 
 EspectroGris::~EspectroGris() {
@@ -62,6 +63,19 @@ void EspectroGris::_ready() {
         position_timer->connect("timeout", Callable(this, "_on_position_timer_timeout"));
     }
 
+    animated_idle = get_node<AnimatedSprite2D>("AnimatedIdle");
+    animated_right = get_node<AnimatedSprite2D>("AnimatedRight");
+    animated_left = get_node<AnimatedSprite2D>("AnimatedLeft");
+
+    if (!animated_idle || !animated_right || !animated_left) {
+        UtilityFunctions::print("Error: One or more AnimatedSprite2D nodes not found");
+        return;
+    }
+
+    animated_idle->play("idle");
+    animated_right->set_visible(false);
+    animated_left->set_visible(false);
+
     choose_new_direction();
 }
 
@@ -69,6 +83,7 @@ void EspectroGris::_process(double delta) {
     Vector2 velocity = current_direction * velocidad;
     set_velocity(velocity);
     move_and_slide();
+    update_animations();
 }
 
 void EspectroGris::_on_position_timer_timeout() {
@@ -92,5 +107,29 @@ void EspectroGris::choose_new_direction() {
         case 3:
             current_direction = Vector2(0, 1); // Abajo
             break;
+    }
+}
+
+void EspectroGris::update_animations() {
+    if (current_direction == Vector2(0, 0)) {
+        animated_idle->set_visible(true);
+        animated_idle->play("idle");
+        animated_right->set_visible(false);
+        animated_left->set_visible(false);
+    } else if (current_direction == Vector2(1, 0)) {
+        animated_idle->set_visible(false);
+        animated_right->set_visible(true);
+        animated_right->play("run_right");
+        animated_left->set_visible(false);
+    } else if (current_direction == Vector2(-1, 0)) {
+        animated_idle->set_visible(false);
+        animated_right->set_visible(false);
+        animated_left->set_visible(true);
+        animated_left->play("run_left");
+    } else {
+        animated_idle->set_visible(true);
+        animated_idle->play("idle");
+        animated_right->set_visible(false);
+        animated_left->set_visible(false);
     }
 }
