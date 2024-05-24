@@ -24,11 +24,11 @@ public:
     int getSize() const;
 
     bool isEmpty() const;
-    void insertFirst(Vector2* element);
-    void insertLast(Vector2* element);
+    void insertFirst(Vector2 element);
+    void insertLast(Vector2 element);
     void removeFirst();
     void removeLast();
-    void insertBefore(node* nextNode, Vector2* value);
+    void insertBefore(node* nextNode, Vector2 value);
     void removeFromBeginning();
 };
 

@@ -44,7 +44,7 @@ bool DoublyLinkedList::isEmpty() const {
     return (head == nullptr);
 }
 
-void DoublyLinkedList::insertFirst(Vector2* element) {
+void DoublyLinkedList::insertFirst(Vector2 element) {
     node* newNode = new node(element);
 
     if (isEmpty()) {
@@ -58,7 +58,7 @@ void DoublyLinkedList::insertFirst(Vector2* element) {
     size++;
 }
 
-void DoublyLinkedList::insertLast(Vector2* element) {
+void DoublyLinkedList::insertLast(Vector2 element) {
     node* newNode = new node(element);
 
     if (isEmpty()) {
