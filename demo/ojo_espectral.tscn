@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://qj60wmga2760"]
+
+[ext_resource type="Texture2D" uid="uid://csg661c0g8ai1" path="res://assets/kindomitch/Characters/Monsters/Bat.png" id="1_hlufs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evpya"]
+atlas = ExtResource("1_hlufs")
+region = Rect2(0, 0, 16, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66wkv"]
+atlas = ExtResource("1_hlufs")
+region = Rect2(16, 0, 16, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yncp6"]
+atlas = ExtResource("1_hlufs")
+region = Rect2(32, 0, 16, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wtn52"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evpya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66wkv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yncp6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6u48g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xq23y"]
+radius = 97.0052
+
+[node name="OjoEspectral" type="OjoEspectral"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 3
+collision_mask = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_wtn52")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.420141
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6u48g")
+
+[node name="RangeArea" type="Area2D" parent="."]
+
+[node name="RangeCollision" type="CollisionShape2D" parent="RangeArea"]
+shape = SubResource("CircleShape2D_xq23y")
