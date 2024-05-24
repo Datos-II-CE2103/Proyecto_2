@@ -19,20 +19,20 @@ texture_filter = 3
 position = Vector2(31, 165)
 
 [node name="EspectroGris" parent="." instance=ExtResource("2_wmokn")]
-position = Vector2(5.07499, 38.832)
-velocity = Vector2(0, -29.8619)
+position = Vector2(5.03045, 21.0751)
+velocity = Vector2(-2.83954, 0)
 
 [node name="CanvasLayer" parent="." instance=ExtResource("3_157vj")]
 
 [node name="Chocobo" parent="." instance=ExtResource("4_hvei2")]
-position = Vector2(8.00072, 4.02659)
-velocity = Vector2(-8.93246, 0)
+position = Vector2(8.07499, 4.0002)
+velocity = Vector2(-8.96076, -4.439)
 
 [node name="Player2D" parent="." instance=ExtResource("5_iisc3")]
 position = Vector2(44, 196)
 
 [node name="Raton" parent="." instance=ExtResource("6_pgstd")]
-position = Vector2(1144.5, 645.498)
+position = Vector2(95.5028, 207)
 velocity = Vector2(0, 0)
 
 [node name="OjoEspectral" parent="." instance=ExtResource("7_ojcom")]
