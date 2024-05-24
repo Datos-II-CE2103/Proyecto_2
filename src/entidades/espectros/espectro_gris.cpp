@@ -24,7 +24,8 @@ EspectroGris::EspectroGris() {
     velocidad = 30.0;
     position_timer = nullptr;
     current_direction = Vector2(0, 0);
-    rng.seed(std::random_device()()); // Inicializar el motor de números aleatorios
+    last_horizontal_direction = Vector2(0, 0);
+    current_patrol_point_index = 0;
 
     animated_idle = nullptr;
     animated_right = nullptr;
@@ -76,7 +77,13 @@ void EspectroGris::_ready() {
     animated_right->set_visible(false);
     animated_left->set_visible(false);
 
-    choose_new_direction();
+    // Define los puntos de patrullaje en forma de cuadrado
+    patrol_points.push_back(Vector2(0, 0));
+    patrol_points.push_back(Vector2(100, 0));
+    patrol_points.push_back(Vector2(100, 100));
+    patrol_points.push_back(Vector2(0, 100));
+
+    move_to_next_patrol_point();
 }
 
 void EspectroGris::_process(double delta) {
@@ -84,29 +91,25 @@ void EspectroGris::_process(double delta) {
     set_velocity(velocity);
     move_and_slide();
     update_animations();
+
+    // Comprobar si hemos llegado al punto de patrullaje actual
+    if (get_global_position().distance_to(patrol_points[current_patrol_point_index]) < 10) {
+        move_to_next_patrol_point();
+    }
 }
 
 void EspectroGris::_on_position_timer_timeout() {
-    choose_new_direction();
+    move_to_next_patrol_point();
 }
 
-void EspectroGris::choose_new_direction() {
-    std::uniform_int_distribution<int> dist(0, 3);
-    int direction = dist(rng);
+void EspectroGris::move_to_next_patrol_point() {
+    current_patrol_point_index = (current_patrol_point_index + 1) % patrol_points.size();
+    Vector2 target = patrol_points[current_patrol_point_index];
+    current_direction = (target - get_global_position()).normalized();
 
-    switch (direction) {
-        case 0:
-            current_direction = Vector2(1, 0); // Derecha
-            break;
-        case 1:
-            current_direction = Vector2(-1, 0); // Izquierda
-            break;
-        case 2:
-            current_direction = Vector2(0, -1); // Arriba
-            break;
-        case 3:
-            current_direction = Vector2(0, 1); // Abajo
-            break;
+    // Actualiza la última dirección horizontal
+    if (current_direction.x != 0) {
+        last_horizontal_direction = current_direction;
     }
 }
 
@@ -116,20 +119,31 @@ void EspectroGris::update_animations() {
         animated_idle->play("idle");
         animated_right->set_visible(false);
         animated_left->set_visible(false);
-    } else if (current_direction == Vector2(1, 0)) {
+    } else if (current_direction.x > 0) {
         animated_idle->set_visible(false);
         animated_right->set_visible(true);
         animated_right->play("run_right");
         animated_left->set_visible(false);
-    } else if (current_direction == Vector2(-1, 0)) {
+    } else if (current_direction.x < 0) {
         animated_idle->set_visible(false);
         animated_right->set_visible(false);
         animated_left->set_visible(true);
         animated_left->play("run_left");
     } else {
-        animated_idle->set_visible(true);
-        animated_idle->play("idle");
-        animated_right->set_visible(false);
-        animated_left->set_visible(false);
+        animated_idle->set_visible(false);
+        if (last_horizontal_direction.x > 0) {
+            animated_right->set_visible(true);
+            animated_right->play("run_right");
+            animated_left->set_visible(false);
+        } else if (last_horizontal_direction.x < 0) {
+            animated_right->set_visible(false);
+            animated_left->set_visible(true);
+            animated_left->play("run_left");
+        } else {
+            animated_idle->set_visible(true);
+            animated_idle->play("idle");
+            animated_right->set_visible(false);
+            animated_left->set_visible(false);
+        }
     }
 }

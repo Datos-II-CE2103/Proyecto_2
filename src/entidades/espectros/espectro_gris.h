@@ -5,7 +5,7 @@
 #include "../../../godot-cpp/gen/include/godot_cpp/classes/character_body2d.hpp"
 #include "../../../godot-cpp/gen/include/godot_cpp/classes/animated_sprite2d.hpp"
 #include "../../../godot-cpp/gen/include/godot_cpp/classes/timer.hpp"
-#include <random>
+#include <vector>
 
 namespace godot {
 
@@ -17,7 +17,9 @@ namespace godot {
         double velocidad;
         Timer *position_timer;
         Vector2 current_direction;
-        std::mt19937 rng; // Motor de números aleatorios
+        Vector2 last_horizontal_direction;
+        std::vector<Vector2> patrol_points;
+        int current_patrol_point_index;
 
         // Añadir AnimatedSprite2D para las diferentes direcciones
         AnimatedSprite2D *animated_idle;
@@ -41,7 +43,7 @@ namespace godot {
         void _process(double delta) override;
 
         void _on_position_timer_timeout();
-        void choose_new_direction();
+        void move_to_next_patrol_point();
         void update_animations();
     };
 
