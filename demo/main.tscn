@@ -16,14 +16,16 @@ texture_filter = 3
 position = Vector2(31, 165)
 
 [node name="EspectroGris" parent="." instance=ExtResource("2_wmokn")]
-position = Vector2(56.1017, 57.5717)
-velocity = Vector2(18.1903, -23.8561)
+position = Vector2(93.4284, 7.87367)
+velocity = Vector2(2.13455, 29.924)
 
 [node name="CanvasLayer" parent="." instance=ExtResource("3_157vj")]
 
 [node name="Chocobo" parent="." instance=ExtResource("4_hvei2")]
-position = Vector2(190.523, 145.968)
-velocity = Vector2(-39.6904, -30.4084)
+position = Vector2(8.07549, 4.067)
+velocity = Vector2(-8.94441, -4.47186)
 
 [node name="Player2D" parent="." instance=ExtResource("5_iisc3")]
 position = Vector2(116, 182)
+
+[connection signal="position_changed" from="Player2D" to="Chocobo" method="_on_player_position_changed"]

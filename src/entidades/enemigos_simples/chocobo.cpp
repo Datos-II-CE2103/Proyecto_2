@@ -38,18 +38,23 @@ void Chocobo::_ready() {
 
     animated_run_left->set_visible(false);
 
-    // Conectar la señal del Player2D
-    Player2D* player_node = get_node<Player2D>("../main/Player2D");  // Ajusta la ruta según tu escena
-    if (player_node) {
-        player_node->connect("position_changed", Callable(this, "_on_player_position_changed"));
-        player_position = player_node->get_global_position();
-    } else {
-        UtilityFunctions::print("Error: Player2D node not found");
-    }
 }
 
 void Chocobo::_process(double delta) {
     update_animations();
+
+    // Calcula la dirección hacia la posición del jugador
+    Vector2 direction = player_position - get_position();
+
+    // Normaliza la dirección para mantener una velocidad constante
+    if (direction.length() > 0) {
+        direction = direction.normalized();
+    }
+
+    current_direction = direction;
+
+    set_velocity(current_direction * 10);
+    move_and_slide();
 }
 
 void Chocobo::update_animations() {
@@ -85,15 +90,15 @@ void Chocobo::update_animations() {
 
 
 void Chocobo::_on_player_position_changed(Vector2 new_position) {
-// Actualiza la posición del jugador cuando cambia
-player_position = new_position;
+
+    player_position = new_position;
 }
 
 bool Chocobo::check_line_of_sight(Vector2 target_position) {
-// Implementa Bresenham Line of Sight
-// Retorna true si hay línea de visión, de lo contrario retorna false
-// Aquí puedes agregar la lógica para verificar si hay obstáculos entre el chocobo y el jugador
-// Por ejemplo, puedes usar RayCast2D para verificar si hay obstáculos en el camino
-// Si no hay obstáculos, retorna true; de lo contrario, retorna false
-return true; // Cambia esto según tu implementación real
+    /* Implementa Bresenham Line of Sight
+     Retorna true si hay línea de visión, de lo contrario retorna false
+     Verificar si hay obstáculos entre el chocobo y el jugador
+     Usar RayCast2D para verificar si hay obstáculos en el camino
+     Si no hay obstáculos, retornar true; de lo contrario, retornar false*/
+    return true;
 }

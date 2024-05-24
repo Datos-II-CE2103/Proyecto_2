@@ -278,9 +278,9 @@ size = Vector2(70, 15)
 size = Vector2(10, 55.5)
 
 [node name="EspectroGris" type="EspectroGris"]
-position = Vector2(62.8869, 3708.29)
+position = Vector2(64.4033, 3556.8)
 collision_layer = 2
-velocity = Vector2(0.30023, -29.9985)
+velocity = Vector2(0.300228, -29.9985)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)
@@ -293,7 +293,7 @@ position = Vector2(1, -0.999999)
 scale = Vector2(0.5, 0.511)
 sprite_frames = SubResource("SpriteFrames_qjlby")
 animation = &"idle"
-frame_progress = 0.213855
+frame_progress = 0.412987
 
 [node name="AnimatedRight" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -302,7 +302,7 @@ position = Vector2(0, -9)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_giari")
 animation = &"run_right"
-frame_progress = 0.344791
+frame_progress = 0.865498
 
 [node name="AnimatedLeft" type="AnimatedSprite2D" parent="."]
 visible = false
