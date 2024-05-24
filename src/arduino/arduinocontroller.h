@@ -4,7 +4,7 @@
 
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/core/class_db.hpp>
-#include <serial/serial.h> // Librería para comunicación serial
+#include <serial/serial.h>
 
 using namespace godot;
 
@@ -20,8 +20,8 @@ public:
     ArduinoController();
     ~ArduinoController();
 
-    void _init(); // Inicialización
-    void _process(float delta); // Procesamiento
+    void _init();
+    void _process(float delta);
 
     void set_port(String p);
     void set_baudrate(int b);

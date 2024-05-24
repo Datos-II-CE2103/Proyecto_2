@@ -15,7 +15,7 @@ ArduinoController::~ArduinoController() {
 }
 
 void ArduinoController::_init() {
-    port = "/dev/ttyUSB0"; // Cambia esto según tu sistema
+    port = "/dev/ttyUSB0";
     baudrate = 9600;
 }
 
