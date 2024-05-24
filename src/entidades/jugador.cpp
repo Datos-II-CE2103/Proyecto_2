@@ -15,6 +15,8 @@ void Player2D::_bind_methods() {
     ClassDB::bind_method(D_METHOD("set_vidas", "p_vidas"), &Player2D::set_vidas);
     ClassDB::add_property("Player2D", PropertyInfo(Variant::INT, "vidas"), "set_vidas", "get_vidas");
     ClassDB::bind_method(D_METHOD("_on_attack_timeout"), &Player2D::_on_attack_timeout);
+    ClassDB::bind_method(D_METHOD("emit_position_changed"), &Player2D::emit_position_changed);
+    ADD_SIGNAL(MethodInfo("position_changed", PropertyInfo(Variant::VECTOR2, "new_position")));
 }
 
 Player2D::Player2D() {
@@ -33,6 +35,7 @@ Player2D::Player2D() {
     attack_collision_down = nullptr;
     isAttacking = false;
     last_direction = Vector2(0, 1);
+    globaltilemap = memnew(TileMap);
 }
 
 Player2D::~Player2D() {
@@ -48,6 +51,7 @@ int Player2D::get_vidas() const {
 }
 
 void Player2D::_ready() {
+    globaltilemap = get_node<TileMap>("../../TileMap");
     player_animation = get_node<AnimatedSprite2D>("PlayerSprite2D");
     attack_timer = get_node<Timer>("AttackTimer");
     attack_area_right = get_node<Area2D>("AttackAreaRight");
@@ -159,6 +163,15 @@ void Player2D::get_input() {
     if (!isAttacking) {
         move_and_slide();
     }
+
+    if (globaltilemap){
+        Vector2 tempActual=globaltilemap->local_to_map(get_global_position());
+        if ((tempActual != tileActual)){
+            tileActual=tempActual;
+            UtilityFunctions::print(tileActual);
+        }
+
+    }
 }
 
 void Player2D::_on_attack_timeout() {
@@ -170,7 +183,15 @@ void Player2D::_on_attack_timeout() {
     attack_collision_down->set_disabled(true);
 }
 
+void Player2D::emit_position_changed() {
+    emit_signal("position_changed", get_position());
+}
+
 void Player2D::_physics_process(double delta) {
+    Vector2 old_position = get_position();
     get_input();
     update_animations();
+    if (old_position != get_position()) {
+        emit_position_changed();
+    }
 }

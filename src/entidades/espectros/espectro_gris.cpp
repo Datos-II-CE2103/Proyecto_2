@@ -15,6 +15,7 @@ void EspectroGris::_bind_methods() {
     ClassDB::add_property("EspectroGris", PropertyInfo(Variant::FLOAT, "velocidad"), "set_velocidad", "get_velocidad");
 
     ClassDB::bind_method(D_METHOD("_on_position_timer_timeout"), &EspectroGris::_on_position_timer_timeout);
+    ClassDB::bind_method(D_METHOD("_on_body_entered_range_area", "body"), &EspectroGris::_on_body_entered_range_area);
 }
 
 EspectroGris::EspectroGris() {
@@ -24,6 +25,8 @@ EspectroGris::EspectroGris() {
     current_direction = Vector2(0, 0);
     last_horizontal_direction = Vector2(0, 0);
     current_patrol_point_index = 0;
+
+    detected = false;
 
     animated_idle = nullptr;
     animated_right = nullptr;
@@ -75,7 +78,6 @@ void EspectroGris::_ready() {
     animated_right->set_visible(false);
     animated_left->set_visible(false);
 
-    // Define los puntos de patrullaje en forma de cuadrado
     patrol_points.push_back(Vector2(0, 0));
     patrol_points.push_back(Vector2(100, 0));
     patrol_points.push_back(Vector2(100, 100));
@@ -83,7 +85,6 @@ void EspectroGris::_ready() {
 
     move_to_next_patrol_point();
 
-    // Obtener referencias a las áreas y los collision shapes
     area_down = get_node<Area2D>("AreaRange_Down");
     area_right = get_node<Area2D>("AreaRange_Right");
     area_left = get_node<Area2D>("AreaRange_Left");
@@ -97,7 +98,7 @@ void EspectroGris::_ready() {
 }
 
 void EspectroGris::_process(double delta) {
-    /*Vector2 velocity = current_direction * velocidad;
+    Vector2 velocity = current_direction * velocidad;
     set_velocity(velocity);
     move_and_slide();
     update_animations();
@@ -106,35 +107,22 @@ void EspectroGris::_process(double delta) {
         move_to_next_patrol_point();
     }
 
+    // Desactiva todos los collisionshapes
+    collision_down->set_disabled(true);
+    collision_right->set_disabled(true);
+    collision_left->set_disabled(true);
+    collision_up->set_disabled(true);
+
+    // Activa el collisionshape correspondiente a la dirección actual
     if (current_direction == Vector2(0, -1)) {
-
-        collision_down->set_disabled(true);
-        collision_right->set_disabled(true);
-        collision_left->set_disabled(true);
-
         collision_up->set_disabled(false);
     } else if (current_direction == Vector2(1, 0)) {
-
-        collision_down->set_disabled(true);
-        collision_up->set_disabled(true);
-        collision_left->set_disabled(true);
-
         collision_right->set_disabled(false);
     } else if (current_direction == Vector2(-1, 0)) {
-
-        collision_down->set_disabled(true);
-        collision_right->set_disabled(true);
-        collision_up->set_disabled(true);
-
         collision_left->set_disabled(false);
     } else if (current_direction == Vector2(0, 1)) {
-
-        collision_left->set_disabled(true);
-        collision_right->set_disabled(true);
-        collision_up->set_disabled(true);
-
         collision_down->set_disabled(false);
-    }*/
+    }
 }
 
 void EspectroGris::_on_position_timer_timeout() {
@@ -185,4 +173,9 @@ void EspectroGris::update_animations() {
             animated_left->set_visible(false);
         }
     }
+}
+
+void EspectroGris::_on_body_entered_range_area(Node* body) {
+    detected = true;
+    UtilityFunctions::print("Jugador Detectado");
 }
