@@ -25,8 +25,8 @@ public:
     int getSize() const;
 
     bool isEmpty() const;
-    void insertFirst(Vector2* element);
-    void insertLast(Vector2* element);
+    void insertFirst(Vector2 element);
+    void insertLast(Vector2 element);
     void removeFirst();
     void removeLast();
 
