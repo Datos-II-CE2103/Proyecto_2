@@ -269,31 +269,30 @@ animations = [{
 size = Vector2(11.7829, 65.7216)
 
 [node name="EspectroGris" type="EspectroGris"]
-position = Vector2(35.182, 6478.09)
+position = Vector2(62.5053, 3746.41)
 collision_layer = 2
-velocity = Vector2(0.300153, -29.9985)
-metadata/_edit_group_ = true
+velocity = Vector2(0.300157, -29.9985)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_ydy60")
 
 [node name="AnimatedIdle" type="AnimatedSprite2D" parent="."]
-visible = false
 texture_filter = 3
 position = Vector2(1, -0.999999)
 scale = Vector2(0.5, 0.511)
 sprite_frames = SubResource("SpriteFrames_qjlby")
 animation = &"idle"
-frame_progress = 0.861703
+frame_progress = 0.157646
 
 [node name="AnimatedRight" type="AnimatedSprite2D" parent="."]
+visible = false
 texture_filter = 1
 position = Vector2(0, -9)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_giari")
 animation = &"run_right"
-frame_progress = 0.928226
+frame_progress = 0.295073
 
 [node name="AnimatedLeft" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -310,37 +309,29 @@ flip_h = true
 autostart = true
 
 [node name="AreaRange_Down" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 
 [node name="CollisionRange_Down" type="CollisionShape2D" parent="AreaRange_Down"]
-visible = false
-position = Vector2(0.649141, 31.4834)
+position = Vector2(0.649139, 31.4834)
 shape = SubResource("RectangleShape2D_jbh8p")
 
 [node name="AreaRange_Right" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 
 [node name="CollisionRange_Right" type="CollisionShape2D" parent="AreaRange_Right"]
-visible = false
 position = Vector2(41.9516, -0.402832)
 shape = SubResource("RectangleShape2D_jbh8p")
 
 [node name="AreaRange_Left" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 
 [node name="CollisionRange_Left" type="CollisionShape2D" parent="AreaRange_Left"]
-visible = false
 position = Vector2(-40.0021, -0.908203)
 shape = SubResource("RectangleShape2D_jbh8p")
 
 [node name="AreaRange_Up" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 
 [node name="CollisionRange_Up" type="CollisionShape2D" parent="AreaRange_Up"]
-visible = false
 position = Vector2(0.323536, -40.769)
 shape = SubResource("RectangleShape2D_jbh8p")

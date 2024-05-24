@@ -94,15 +94,10 @@ void EspectroGris::_ready() {
     collision_left = area_left->get_node<CollisionShape2D>("CollisionRange_Left");
     collision_up = area_up->get_node<CollisionShape2D>("CollisionRange_Up");
 
-    // Desactivar todas las áreas y los collision shapes al inicio
-    area_down->set_collision_layer_value(1, false);
-    area_right->set_collision_layer_value(1, false);
-    area_left->set_collision_layer_value(1, false);
-    area_up->set_collision_layer_value(1, false);
 }
 
 void EspectroGris::_process(double delta) {
-    Vector2 velocity = current_direction * velocidad;
+    /*Vector2 velocity = current_direction * velocidad;
     set_velocity(velocity);
     move_and_slide();
     update_animations();
@@ -113,36 +108,33 @@ void EspectroGris::_process(double delta) {
 
     if (current_direction == Vector2(0, -1)) {
 
-        area_down->set_collision_layer_value(1, false);
-        area_right->set_collision_layer_value(1, false);
-        area_left->set_collision_layer_value(1, false);
+        collision_down->set_disabled(true);
+        collision_right->set_disabled(true);
+        collision_left->set_disabled(true);
 
-        area_up->set_collision_layer_value(1, true);
         collision_up->set_disabled(false);
     } else if (current_direction == Vector2(1, 0)) {
 
-        area_down->set_collision_layer_value(1, false);
-        area_left->set_collision_layer_value(1, false);
-        area_up->set_collision_layer_value(1, false);
+        collision_down->set_disabled(true);
+        collision_up->set_disabled(true);
+        collision_left->set_disabled(true);
 
-        area_right->set_collision_layer_value(1, true);
         collision_right->set_disabled(false);
     } else if (current_direction == Vector2(-1, 0)) {
-        area_down->set_collision_layer_value(1, false);
-        area_right->set_collision_layer_value(1, false);
-        area_up->set_collision_layer_value(1, false);
 
-        area_left->set_collision_layer_value(1, true);
+        collision_down->set_disabled(true);
+        collision_right->set_disabled(true);
+        collision_up->set_disabled(true);
+
         collision_left->set_disabled(false);
     } else if (current_direction == Vector2(0, 1)) {
 
-        area_right->set_collision_layer_value(1, false);
-        area_left->set_collision_layer_value(1, false);
-        area_up->set_collision_layer_value(1, false);
+        collision_left->set_disabled(true);
+        collision_right->set_disabled(true);
+        collision_up->set_disabled(true);
 
-        area_down->set_collision_layer_value(1, true);
         collision_down->set_disabled(false);
-    }
+    }*/
 }
 
 void EspectroGris::_on_position_timer_timeout() {
