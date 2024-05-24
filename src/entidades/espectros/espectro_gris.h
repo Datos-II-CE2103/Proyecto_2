@@ -5,6 +5,8 @@
 #include "../../../godot-cpp/gen/include/godot_cpp/classes/character_body2d.hpp"
 #include "../../../godot-cpp/gen/include/godot_cpp/classes/animated_sprite2d.hpp"
 #include "../../../godot-cpp/gen/include/godot_cpp/classes/timer.hpp"
+#include "../../godot-cpp/gen/include/godot_cpp/classes/area2d.hpp"
+#include "../../godot-cpp/gen/include/godot_cpp/classes/collision_shape2d.hpp"
 #include <vector>
 
 namespace godot {
@@ -21,10 +23,19 @@ namespace godot {
         std::vector<Vector2> patrol_points;
         int current_patrol_point_index;
 
-        // Añadir AnimatedSprite2D para las diferentes direcciones
         AnimatedSprite2D *animated_idle;
         AnimatedSprite2D *animated_right;
         AnimatedSprite2D *animated_left;
+
+        Area2D* area_down;
+        Area2D* area_right;
+        Area2D* area_left;
+        Area2D* area_up;
+
+        CollisionShape2D* collision_down;
+        CollisionShape2D* collision_right;
+        CollisionShape2D* collision_left;
+        CollisionShape2D* collision_up;
 
     protected:
         static void _bind_methods();

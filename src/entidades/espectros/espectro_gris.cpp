@@ -2,8 +2,6 @@
 
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
-#include <godot_cpp/classes/timer.hpp>
-#include <godot_cpp/classes/animated_sprite2d.hpp>
 
 using namespace godot;
 
@@ -84,6 +82,23 @@ void EspectroGris::_ready() {
     patrol_points.push_back(Vector2(0, 100));
 
     move_to_next_patrol_point();
+
+    // Obtener referencias a las áreas y los collision shapes
+    area_down = get_node<Area2D>("AreaRange_Down");
+    area_right = get_node<Area2D>("AreaRange_Right");
+    area_left = get_node<Area2D>("AreaRange_Left");
+    area_up = get_node<Area2D>("AreaRange_Up");
+
+    collision_down = area_down->get_node<CollisionShape2D>("CollisionRange_Down");
+    collision_right = area_right->get_node<CollisionShape2D>("CollisionRange_Right");
+    collision_left = area_left->get_node<CollisionShape2D>("CollisionRange_Left");
+    collision_up = area_up->get_node<CollisionShape2D>("CollisionRange_Up");
+
+    // Desactivar todas las áreas y los collision shapes al inicio
+    area_down->set_collision_layer_value(1, false);
+    area_right->set_collision_layer_value(1, false);
+    area_left->set_collision_layer_value(1, false);
+    area_up->set_collision_layer_value(1, false);
 }
 
 void EspectroGris::_process(double delta) {
@@ -92,9 +107,41 @@ void EspectroGris::_process(double delta) {
     move_and_slide();
     update_animations();
 
-    // Comprobar si hemos llegado al punto de patrullaje actual
     if (get_global_position().distance_to(patrol_points[current_patrol_point_index]) < 10) {
         move_to_next_patrol_point();
+    }
+
+    if (current_direction == Vector2(0, -1)) {
+
+        area_down->set_collision_layer_value(1, false);
+        area_right->set_collision_layer_value(1, false);
+        area_left->set_collision_layer_value(1, false);
+
+        area_up->set_collision_layer_value(1, true);
+        collision_up->set_disabled(false);
+    } else if (current_direction == Vector2(1, 0)) {
+
+        area_down->set_collision_layer_value(1, false);
+        area_left->set_collision_layer_value(1, false);
+        area_up->set_collision_layer_value(1, false);
+
+        area_right->set_collision_layer_value(1, true);
+        collision_right->set_disabled(false);
+    } else if (current_direction == Vector2(-1, 0)) {
+        area_down->set_collision_layer_value(1, false);
+        area_right->set_collision_layer_value(1, false);
+        area_up->set_collision_layer_value(1, false);
+
+        area_left->set_collision_layer_value(1, true);
+        collision_left->set_disabled(false);
+    } else if (current_direction == Vector2(0, 1)) {
+
+        area_right->set_collision_layer_value(1, false);
+        area_left->set_collision_layer_value(1, false);
+        area_up->set_collision_layer_value(1, false);
+
+        area_down->set_collision_layer_value(1, true);
+        collision_down->set_disabled(false);
     }
 }
 
