@@ -34,6 +34,7 @@ Player2D::Player2D() {
     isAttacking = false;
     last_direction = Vector2(0, 1);
     globaltilemap = memnew(TileMap);
+    breadcrumbing = new DoublyLinkedList();
 }
 
 Player2D::~Player2D() {
@@ -166,7 +167,8 @@ void Player2D::get_input() {
         Vector2 tempActual=globaltilemap->local_to_map(get_global_position());
         if ((tempActual != tileActual)){
             tileActual=tempActual;
-            UtilityFunctions::print(tileActual);
+            breadcrumbing->insertLast(tileActual);
+            //UtilityFunctions::print(tileActual);
         }
 
     }

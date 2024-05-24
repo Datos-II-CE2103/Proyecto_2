@@ -40,7 +40,7 @@ bool LinkedList::isEmpty() const {
     return (head == nullptr);
 }
 
-void LinkedList::insertFirst(Vector2* element) {
+void LinkedList::insertFirst(Vector2 element) {
     node* newNode = new node(element);
 
     if (isEmpty()) {
@@ -54,7 +54,7 @@ void LinkedList::insertFirst(Vector2* element) {
     size++;
 }
 
-void LinkedList::insertLast(Vector2* element) {
+void LinkedList::insertLast(Vector2 element) {
     node* newNode = new node(element);
 
     if (isEmpty()) {
@@ -92,7 +92,7 @@ void LinkedList::removeLast() {
     }
 }
 
-void LinkedList::insertBefore(node* nextNode, Vector2* value) {
+void LinkedList::insertBefore(node* nextNode, Vector2 value) {
     node* newNode = new node(value);
     node* prevNode = nextNode->getPrevNode();
 

@@ -10,6 +10,7 @@
 #include "../../godot-cpp/gen/include/godot_cpp/classes/area2d.hpp"
 #include "../../godot-cpp/gen/include/godot_cpp/classes/collision_shape2d.hpp"
 #include "../godot-cpp/gen/include/godot_cpp/classes/tile_map.hpp"
+#include "../algoritmos/doubly_linked_list.h"
 
 namespace godot {
 
@@ -37,6 +38,8 @@ namespace godot {
 
         TileMap* globaltilemap;
         Vector2 tileActual;
+
+        DoublyLinkedList* breadcrumbing;
 
     protected:
         static void _bind_methods();
