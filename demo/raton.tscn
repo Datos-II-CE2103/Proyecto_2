@@ -144,16 +144,17 @@ animations = [{
 }]
 
 [node name="Raton" type="Raton"]
-position = Vector2(0, -255.459)
+position = Vector2(0, -115.503)
 scale = Vector2(0.75, 0.75)
-velocity = Vector2(0, -30)
+collision_layer = 3
+collision_mask = 3
+velocity = Vector2(0, 30)
 
 [node name="AnimatedRun" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_huagg")
 animation = &"run_down"
 autoplay = "run_down"
-frame_progress = 0.16308
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)

@@ -23,6 +23,8 @@ namespace godot {
         std::vector<Vector2> patrol_points;
         int current_patrol_point_index;
 
+        bool detected;
+
         AnimatedSprite2D *animated_idle;
         AnimatedSprite2D *animated_right;
         AnimatedSprite2D *animated_left;
@@ -56,6 +58,8 @@ namespace godot {
         void _on_position_timer_timeout();
         void move_to_next_patrol_point();
         void update_animations();
+
+        void _on_body_entered_range_area(Node* body);
     };
 
 }

@@ -134,15 +134,17 @@ animations = [{
 size = Vector2(16, 14)
 
 [node name="Chocobo" type="Chocobo"]
-position = Vector2(-0.00314377, -0.0149434)
-velocity = Vector2(-2.05872, -9.78579)
+position = Vector2(0.0245602, 0.116741)
+collision_layer = 3
+collision_mask = 3
+velocity = Vector2(2.05876, 9.78578)
 
 [node name="AnimatedRunRight" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_evqef")
 animation = &"run_right"
 autoplay = "run_right"
-frame_progress = 0.617459
+frame_progress = 0.223337
 flip_h = true
 
 [node name="AnimatedRunLeft" type="AnimatedSprite2D" parent="."]
@@ -150,7 +152,7 @@ visible = false
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_q0hq3")
 animation = &"run_left"
-frame_progress = 0.393724
+frame_progress = 0.597579
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
